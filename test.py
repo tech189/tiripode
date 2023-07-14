@@ -1,5 +1,6 @@
-import json
+import json, regex
 from pathlib import Path
+import unicodedata
 
 def print_first_decl_noun(noun):
     # TODO first decl masc!
@@ -37,28 +38,51 @@ def latin_to_linear_b(text):
     # split text by spaces and hyphens
     with open("sign-table.json", "r") as sign_file:
         sign_dict = json.load(sign_file)
-    text = text.split("-")
-    # print(text)
+    # text = text.split()
+    print(text)
+    text = filter(None, regex.split(r"([^\p{L}0-9_-])", text))
+    # Print out the filtered text
+    for char in text:
+        print("-" + char + "-")
+        try:
+            print([unicodedata.name(c) for c in char])
+        except:
+            print("can't find char name")
     output = ""
-    for syllabogram in text:
+    # for word in text:
+    #     word = word.split("-")
+    for word in text:
         # print(sign_dict[syllabogram])
-        if syllabogram in sign_dict:
-            output = output + sign_dict[syllabogram]
+        syllabograms = word.split("-")
+        for syllabogram in syllabograms:
+            if syllabogram in sign_dict:
+                output = output + sign_dict[syllabogram]
+            else:
+                output = output + syllabogram
     return output
 
 def linear_b_to_latin(text):
     # split text by spaces and hyphens
     with open("sign-table.json", "r") as sign_file:
         sign_dict = json.load(sign_file)
-    text = text.split("")
-    print(text)
+    # text = text.split()
+    # print(text)
     output = ""
     for syllabogram in text:
         # print(sign_dict[syllabogram])
-        if syllabogram in sign_dict.values():
-            output = output + sign_dict[syllabogram]
+        # if syllabogram in sign_dict.values():
+        #     output = output + sign_dict[syllabogram]
+        for key, value in sign_dict.items():
+            if value == syllabogram:
+                # print("key is", key, "value is", value)
+                output = output + key + "-"
+            elif output[:-1] == "-":
+                output = output[-1:]
     return output
 
-print(latin_to_linear_b("ke-re-a2 *2̣0̣1̣VAS ti-ri-po-de  "))
-# ,  a3-ke-u  ,  ke-re-si-jo  ,  we-ke   *201VAS   2   ti-ri-po  ,  e-me  ,  po-de  ,  o-wo-we   *201VAS   1   ti-ri-po  ,  ke-re-si-jo  ,  we-ke  ,  a-pu  ,  ke-ka-u-me-ṇọ[ qe-to     *203VAS   3   di-pa  ,  me-zo-e  ,  qe-to-ro-we   *202VAS   1   di-pa-e  ,  me-zo-e  ,  ti-ri-o-we-e    *202VAS    2   di-pa  ,  me-wi-jo  ,  qe-to-ro-we     *202VAS    1    di-pa  ,  me-wi-jo  ,  ti-ri-jo-we   *202VAS   1   di-pa  ,  me-wi-jo  ,  a-no-we   *202VAS   1"))
-print(print_first_decl_noun("ko-to-na"))
+print(latin_to_linear_b('''ke-re-a2 *2̣0̣1̣VAS ti-ri-po-de  
+ ,  a3-ke-u  ,  ke-re-si-jo  ,  we-ke   *201VAS   2   ti-ri-po  ,  e-me  ,  po-de  ,  o-wo-we   *201VAS   1   ti-ri-po  ,  ke-re-si-jo  ,  we-ke  ,  a-pu  ,  ke-ka-u-me-ṇọ[ qe-to     *203VAS   3   di-pa  ,  me-zo-e  ,  qe-to-ro-we   *202VAS   1   di-pa-e  ,  me-zo-e  ,  ti-ri-o-we-e    *202VAS    2   di-pa  ,  me-wi-jo  ,  qe-to-ro-we     *202VAS    1    di-pa  ,  me-wi-jo  ,  ti-ri-jo-we   *202VAS   1   di-pa  ,  me-wi-jo  ,  a-no-we   *202VAS   1'''))
+
+print(linear_b_to_latin("𐀐𐀩𐀪𐀡"))
+
+# print_first_decl_noun("ko-to-na")
