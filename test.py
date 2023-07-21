@@ -1,40 +1,17 @@
-import json                  # importing sign table
-import regex                 # splitting text into words
-import unicodedata           # dealing with diacritics
+import json                 # importing sign table
+import regex                # splitting text into words
+import unicodedata          # dealing with diacritics
+import endings              # noun, verb endings
 
 # TODO move endings into json
 
 def print_first_decl_noun(noun):
-    # TODO first decl masc!
-    # TODO add allative?
-    endings = {
-        "singular": {
-            # case: [syllabograms, pronunciation]
-            "nominative": ["a", "ā̆"],
-            "accusative": ["a", "ā̆n"],
-            "genitive": ["a", "ās"],
-            "dative": ["a", "āi"],
-            "locative": ["a", "ai"], # Del Freo-Perna 2019 pronunciation is not certain for loc & ins
-            "instrumental": ["a", "ā"] # Colvin "the spelling does not allow us to say whether it was distinct in the singular."
-        },
-        "dual": {
-            "nominative": ["o", "ō"],
-            "accusative": ["o", "ō"],
-            "genitive": ["o-i", "oi(h)i(n)"], # TODO check what the uppercase h means in Del Freo-Perna 2019
-            "dative": ["o-i", "oi(h)i(n)"],
-        },
-        "plural": {
-            "nominative": ["a/a3", "ai"], # TODO check when a3 appears
-            "accusative": ["a", "āns"],
-            "genitive": ["a-o", "ā(h)ōn"],
-            "dative/locative": ["a-i", "ā(h)i"],
-            "instrumental": ["a-pi", "āp(h)i"]
-        }
-    }
+
+    endings_dict = endings.endings["nouns"]["1st declension"]
 
     print("First declension noun - " + noun + "\n")
     no_of_spaces = 16
-    for key, value in endings.items():
+    for key, value in endings_dict.items():
         print(key.capitalize() + ":")
         for case, ending in value.items():
             spacer = ":" + " "  * (no_of_spaces - len(case))
@@ -42,36 +19,12 @@ def print_first_decl_noun(noun):
         print()
 
 def print_second_decl_noun(noun):
-    # TODO add second decl neuter
-    # TODO add allative?
-    endings = {
-        "singular": {
-            # case: [syllabograms, pronunciation]
-            "nominative": ["o", "os"],
-            "accusative": ["o", "on"],
-            "genitive": ["o-jo", "oio"],
-            "dative": ["o", "ōi"],
-            "locative": ["o", "oi"],
-            "instrumental": ["o", "ō"]
-        },
-        "dual": {
-            "nominative": ["o", "ō"],
-            "accusative": ["o", "ō"],
-            "genitive": ["o-i", "oi(h)i(n)"], # TODO check what the uppercase h means in Del Freo-Perna 2019
-            "dative": ["o-i", "oi(h)i(n)"],
-        },
-        "plural": {
-            "nominative": ["o", "oi"],
-            "accusative": ["o", "ons"],
-            "genitive": ["o", "ōn"],
-            "dative/locative": ["o-i", "oi(h)i"],
-            "instrumental": ["o/o-pi", "ōis/o(i)p(h)i"]
-        }
-    }
+
+    endings_dict = endings.endings["nouns"]["2nd declension"]
 
     print("Second declension noun - " + noun + "\n")
     no_of_spaces = 16
-    for key, value in endings.items():
+    for key, value in endings_dict.items():
         print(key.capitalize() + ":")
         for case, ending in value.items():
             spacer = ":" + " "  * (no_of_spaces - len(case))
@@ -79,72 +32,67 @@ def print_second_decl_noun(noun):
         print()
 
 def print_third_decl_noun(noun, gen_sg):
-    # TODO add third decl neuter
-    # TODO add allative?
-    endings = {
-        "singular": {
-            # case: [syllabograms, pronunciation]
-            "nominative": ["", ""],
-            "accusative": ["a", "a"],
-            "genitive": ["o", "os"],
-            "dative": ["e/i", "ei/i"],
-            "locative": ["i/e/e-u", "i/ei/ēu"], # TODO double check this
-            "instrumental": ["e", "ē"]
-        },
-        "dual": {
-            "nominative": ["e", "e"],
-            "accusative": ["e", "e"] # TODO no genitive/dative?
-        },
-        "plural": {
-            "nominative": ["e", "es"],
-            "accusative": ["a", "as"],
-            "genitive": ["o", "ōn"],
-            "dative/locative": ["si", "si"], # TODO which vowel to insert between gen sg stem and ending?
-            "instrumental": ["pi", "p(h)i"]
-        }
-    }
+
+    endings_dict = endings.endings["nouns"]["3rd declension"]
 
     print("Third declension noun - " + noun + "\n")
     no_of_spaces = 16
-    for key, value in endings.items():
+    for key, value in endings_dict.items():
         print(key.capitalize() + ":")
         for case, ending in value.items():
             spacer = ":" + " "  * (no_of_spaces - len(case))
             # special for third declension stems
-            if case is "nominative" and key is "singular":
+            if case == "nominative" and key == "singular":
                 print(case + spacer + noun + ending[0] + "  (-" + ending[1] + ")")
             else:
                 print(case + spacer + gen_sg[:-1] + ending[0] + "  (-" + ending[1] + ")")
         print()
 
 def print_verb(verb):
-    # TODO add thematic verbs
-    # TODO label verbs in lexicon as thematic/athematic, active/mediopassive
-    endings = {
-        "athematic": {
-            "active": {
-                "primary": { # TODO check if Colvin uses other word
-                    # part: [syllabograms, pronunciation]
-                    "3rd sg.": ["si", "si"],
-                    "3rd pl.": ["si", "nsi"]
-                },
-                "secondary": {
-                    "3rd sg.": ["", "/t"], # TODO check
-                    "3rd pl.": ["", "/nt"] # TODO check
-                }
-            }
-        }
-        # TODO add mediopassive
-    }
+    
+    endings_dict = endings.endings["verbs"]["athematic"]["active"]
 
     print("Verb - " + verb + "\n")
     no_of_spaces = 16
-    for key, value in endings["athematic"]["active"].items():
+    for key, value in endings_dict.items():
         print(key.capitalize() + ":")
         for case, ending in value.items():
             spacer = ":" + " "  * (no_of_spaces - len(case))
             print(case + spacer + verb + ending[0] + "  (-" + ending[1] + ")")
         print()
+
+def label_lexicon():
+    with open("lexicon.json", "r") as sign_file:
+        lexicon_dict = json.load(sign_file)
+    
+    # print(lexicon_dict[3]["transcription"])
+    # prints "*34-ke-te-si"
+
+    first_decl = endings.endings["nouns"]["1st declension"]
+    second_decl = endings.endings["nouns"]["2nd declension"]
+    third_decl = endings.endings["nouns"]["3rd declension"]
+    active_verbs = endings.endings["verbs"]["athematic"]["active"]
+
+    counter = 0
+    for word in lexicon_dict:
+        if counter < 50:
+            # if len(word["transcription"]) == 5:
+            #     print(word["transcription"])
+            # for key, value in first_decl.items():
+            #     for case, ending in value.items():
+            #         if ending[0] in word["transcription"][:-5]:
+            #             print(word["transcription"] + " might be 1st declension " + case + " " + key)
+            for key, value in second_decl.items():
+                for case, ending in value.items():
+                    # TODO need to get ending, not just in the word!
+                    if ending[0] in word["transcription"][:-5]:
+                        print(word["transcription"] + " might be 2nd declension " + case + " " + key + " (" + ending[0] + ")")
+            # for key, value in third_decl.items():
+            #     for case, ending in value.items():
+            #         if ending[0] in word["transcription"][:-5]:
+            #             print(word["transcription"] + " might be 3rd declension " + case + " " + key)
+            counter += 1
+        
 
 def latin_to_linear_b(text):
     # split text by spaces and hyphens
@@ -215,3 +163,4 @@ print_first_decl_noun("ko-to-na")
 print_second_decl_noun("do-e-ro")
 print_third_decl_noun("po-me", "po-me-no")
 print_verb("pa")
+label_lexicon()
