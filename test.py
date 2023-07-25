@@ -73,25 +73,42 @@ def label_lexicon():
     third_decl = endings.endings["nouns"]["3rd declension"]
     active_verbs = endings.endings["verbs"]["athematic"]["active"]
 
+    possible_nouns = {}
+
     counter = 0
     for word in lexicon_dict:
-        if counter < 50:
-            # if len(word["transcription"]) == 5:
-            #     print(word["transcription"])
-            # for key, value in first_decl.items():
-            #     for case, ending in value.items():
-            #         if ending[0] in word["transcription"][:-5]:
-            #             print(word["transcription"] + " might be 1st declension " + case + " " + key)
-            for key, value in second_decl.items():
-                for case, ending in value.items():
-                    # TODO need to get ending, not just in the word!
-                    if ending[0] in word["transcription"][:-5]:
-                        print(word["transcription"] + " might be 2nd declension " + case + " " + key + " (" + ending[0] + ")")
-            # for key, value in third_decl.items():
-            #     for case, ending in value.items():
-            #         if ending[0] in word["transcription"][:-5]:
-            #             print(word["transcription"] + " might be 3rd declension " + case + " " + key)
+        if counter >= 0:
+            # print("word:", word["transcription"])
+            for declension, number_set in endings.endings["nouns"].items():
+                for number, ending_set in number_set.items():
+                    for case, ending in ending_set.items():
+                        if ending[0] != "":
+                            # TODO need to get ending, not just in the word!
+                            # if ending[0] in word["transcription"][:-5]:
+                            #     print(word["transcription"] + " might be 2nd declension " + case + " " + key + " (" + ending[0] + ")")
+                            ending_pointer = len(ending[0]) - 1
+                            word_pointer = len(word["transcription"]) - 1
+
+                            # print("\tending pointer", ending_pointer, "word pointer", word_pointer)
+                            # print("\tending char",  ending[0][ending_pointer], "word char", word["transcription"][word_pointer])
+
+                            while ending[0][ending_pointer] == word["transcription"][word_pointer] and ending_pointer >= 0 and word_pointer >= 0:
+                                # print("\tending pointer", ending_pointer, "word pointer", word_pointer, "ending char",  ending[0][ending_pointer], "word char", word["transcription"][word_pointer])
+                                if ending_pointer == 0:
+                                    # print("\t", word["transcription"], "might be", declension, case, number, "(" + ending[0] + ")")
+                                    if word["transcription"] not in possible_nouns.keys():
+                                        possible_nouns[word["transcription"]] = []
+                                    possible_nouns[word["transcription"]].append(declension + " " + case + " " + number + " (" + ending[0] + ")")
+                                ending_pointer =- 1
+                                word_pointer =- 1
+                # for key, value in third_decl.items():
+                #     for case, ending in value.items():
+                #         if ending[0] in word["transcription"][:-5]:
+                #             print(word["transcription"] + " might be 3rd declension " + case + " " + key)
             counter += 1
+    
+    with open("lexicon-labelled.json", "w") as labelled_file:
+        labelled_file.write(json.dumps(possible_nouns, indent=2))
         
 
 def latin_to_linear_b(text):
@@ -159,8 +176,8 @@ def linear_b_to_latin(text):
 
 # print(linear_b_to_latin("𐀐𐀩𐀪𐀡"))
 
-print_first_decl_noun("ko-to-na")
-print_second_decl_noun("do-e-ro")
-print_third_decl_noun("po-me", "po-me-no")
-print_verb("pa")
+# print_first_decl_noun("ko-to-na")
+# print_second_decl_noun("do-e-ro")
+# print_third_decl_noun("po-me", "po-me-no")
+# print_verb("pa")
 label_lexicon()
