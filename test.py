@@ -110,6 +110,28 @@ def label_lexicon():
     with open("lexicon-labelled.json", "w") as labelled_file:
         labelled_file.write(json.dumps(possible_nouns, indent=2))
         
+def label_lexicon2():
+    with open("lexicon.json", "r") as sign_file:
+        lexicon_dict = json.load(sign_file)
+    
+    labelled_dict = {}
+    unlabelled_dict = {}
+    counter = 0
+    for word in lexicon_dict:
+        if counter >= 0:
+            search_list = ["anthroponym", "toponym"]
+            if regex.search("(anthropo|topo|theo|ethno|patro|phyto)nym", word["definition"], regex.IGNORECASE):
+            # if set(search_list).intersection(word["definition"].split()):
+                labelled_dict[word["transcription"]] = word
+                labelled_dict[word["transcription"]]["category"] = "noun"
+            else:
+                unlabelled_dict[word["transcription"]] = word
+            counter += 1
+    
+    with open("lexicon-labelled.json", "w") as labelled_file:
+        labelled_file.write(json.dumps(labelled_dict, indent=2, ensure_ascii=False))
+    with open("lexicon-unlabelled.json", "w") as labelled_file:
+        labelled_file.write(json.dumps(unlabelled_dict, indent=2, ensure_ascii=False))
 
 def latin_to_linear_b(text):
     # split text by spaces and hyphens
@@ -147,8 +169,8 @@ def latin_to_linear_b(text):
         syllabograms = word.split("-")
         # print(syllabograms)
         for syllabogram in syllabograms:
-            if syllabogram in sign_dict:
-                output = output + sign_dict[syllabogram]
+            if syllabogram.lower() in sign_dict:
+                output = output + sign_dict[syllabogram.lower()]
             else:
                 output = output + syllabogram
     return output
@@ -176,8 +198,12 @@ def linear_b_to_latin(text):
 
 # print(linear_b_to_latin("𐀐𐀩𐀪𐀡"))
 
+# TODO convert lexicon's words that have missing linear b signs like 'ai' and '*35'
+print(latin_to_linear_b("Po-ti-ni-a"))
+
 # print_first_decl_noun("ko-to-na")
 # print_second_decl_noun("do-e-ro")
 # print_third_decl_noun("po-me", "po-me-no")
 # print_verb("pa")
-label_lexicon()
+# label_lexicon()
+label_lexicon2()
