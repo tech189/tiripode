@@ -137,6 +137,9 @@ def latin_to_linear_b(text):
     # split text by spaces and hyphens
     with open("sign-table.json", "r") as sign_file:
         sign_dict = json.load(sign_file)
+    
+    numeral_dict = sign_dict["numerals"]
+    sign_dict = sign_dict["text"]
     # text = text.split()
     print(text)
     text = filter(None, regex.split(r"([^\p{L}\p{M}0-9_\-\*])", text))
@@ -151,7 +154,6 @@ def latin_to_linear_b(text):
     # for word in text:
     #     word = word.split("-")
     # print(list(text))
-    # TODO convert numerals!
     # TODO convert ideograms!
     for word in text:
         # print(sign_dict[syllabogram])
@@ -167,10 +169,29 @@ def latin_to_linear_b(text):
                     print(escaped.encode().decode("unicode-escape"))
                     # this just prints, need to keep hold and recombine after conversion
         syllabograms = word.split("-")
-        # print(syllabograms)
+        print(syllabograms)
         for syllabogram in syllabograms:
             if syllabogram.lower() in sign_dict:
                 output = output + sign_dict[syllabogram.lower()]
+            elif syllabogram.startswith("*"):
+                try:
+                    # search for number in syllabogram, ignores e.g. VAS
+                    output = output + sign_dict[regex.search(r'\d+', syllabogram)[0]]
+                except:
+                    output = output + syllabogram
+            elif syllabogram.isnumeric():
+                try:
+                    numeral = int(syllabogram)
+                    # 99,999 is the maximum
+                    if numeral < 100_000:
+                        # get a list of each digit with leading zeroes
+                        split_numeral = [int(digit) for digit in str(numeral).zfill(5)]
+                        # assign each number
+                        ten_thousands, thousands, hundreds, tens, ones = split_numeral[0] * 10_000, split_numeral[1] * 1_000, split_numeral[2] * 100, split_numeral[3] * 10, split_numeral[4]
+                        # lookup each numeral and add to output
+                        output = output + numeral_dict.get(str(ten_thousands), "") + numeral_dict.get(str(thousands), "") + numeral_dict.get(str(hundreds), "") + numeral_dict.get(str(tens), "") + numeral_dict.get(str(ones), "")
+                except:
+                    output = output + syllabogram
             else:
                 output = output + syllabogram
     return output
@@ -194,12 +215,16 @@ def linear_b_to_latin(text):
                 output = output[-1:]
     return output
 
-# print(latin_to_linear_b('''ke-re-a2 *2̣0̣1̣VAS ti-ri-po-de  ,  a3-ke-u  ,  ke-re-si-jo  ,  we-ke   *201VAS   2   ti-ri-po  ,  e-me  ,  po-de  ,  o-wo-we   *201VAS   1   ti-ri-po  ,  ke-re-si-jo  ,  we-ke  ,  a-pu  ,  ke-ka-u-me-ṇọ[ qe-to     *203VAS   3   di-pa  ,  me-zo-e  ,  qe-to-ro-we   *202VAS   1   di-pa-e  ,  me-zo-e  ,  ti-ri-o-we-e    *202VAS    2   di-pa  ,  me-wi-jo  ,  qe-to-ro-we     *202VAS    1    di-pa  ,  me-wi-jo  ,  ti-ri-jo-we   *202VAS   1   di-pa  ,  me-wi-jo  ,  a-no-we   *202VAS   1'''))
+# PY Ta 641
+print(latin_to_linear_b('''.1a                                                                                                                                                                                                                                                                               ,  ke-re-a2  , *2̣0̣1̣VAS[
+.1b      ti-ri-po-de  ,  a3-ke-u  ,  ke-re-si-jo  ,  we-ke   *201VAS   2   ti-ri-po  ,  e-me  ,  po-de  ,  o-wo-we   *201VAS   1   ti-ri-po  ,  ke-re-si-jo  ,  we-ke  ,  a-pu  ,  ke-ka-u-me-ṇọ[
+.2        qe-to     *203VAS   3   di-pa  ,  me-zo-e  ,  qe-to-ro-we   *202VAS   1   di-pa-e  ,  me-zo-e  ,  ti-ri-o-we-e    *202VAS    2   di-pa  ,  me-wi-jo  ,  qe-to-ro-we     *202VAS    1    [
+.3        di-pa  ,  me-wi-jo  ,  ti-ri-jo-we   *202VAS   1   di-pa  ,  me-wi-jo  ,  a-no-we   *202VAS   1'''))
 
 # print(linear_b_to_latin("𐀐𐀩𐀪𐀡"))
 
 # TODO convert lexicon's words that have missing linear b signs like 'ai' and '*35'
-print(latin_to_linear_b("Po-ti-ni-a"))
+# print(latin_to_linear_b("Po-ti-ni-a"))
 
 # print_first_decl_noun("ko-to-na")
 # print_second_decl_noun("do-e-ro")
