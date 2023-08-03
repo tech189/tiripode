@@ -2,6 +2,7 @@ import json                 # importing sign table
 import regex                # splitting text into words
 import unicodedata          # dealing with diacritics
 import endings              # noun, verb endings
+import logging              # TODO replace prints with logging debug/info
 
 # TODO move endings into json
 
@@ -83,9 +84,7 @@ def label_lexicon():
                 for number, ending_set in number_set.items():
                     for case, ending in ending_set.items():
                         if ending[0] != "":
-                            # TODO need to get ending, not just in the word!
-                            # if ending[0] in word["transcription"][:-5]:
-                            #     print(word["transcription"] + " might be 2nd declension " + case + " " + key + " (" + ending[0] + ")")
+                            # scan ending, not just checking if it's in the word
                             ending_pointer = len(ending[0]) - 1
                             word_pointer = len(word["transcription"]) - 1
 
@@ -121,7 +120,6 @@ def label_lexicon2():
         if counter >= 0:
             search_list = ["anthroponym", "toponym"]
             if regex.search("(anthropo|topo|theo|ethno|patro|phyto)nym", word["definition"], regex.IGNORECASE):
-            # if set(search_list).intersection(word["definition"].split()):
                 labelled_dict[word["transcription"]] = word
                 labelled_dict[word["transcription"]]["category"] = "noun"
             else:
@@ -133,15 +131,26 @@ def label_lexicon2():
     with open("lexicon-unlabelled.json", "w") as labelled_file:
         labelled_file.write(json.dumps(unlabelled_dict, indent=2, ensure_ascii=False))
 
-def latin_to_linear_b(text):
+def fix_lexicon_transcriptions():
+    with open("lexicon.json", "r") as sign_file:
+        lexicon_dict = json.load(sign_file)
+    
+    for word in lexicon_dict:
+        if word["word"] != latin_to_linear_b(word["transcription"], hyphens=True):
+            print("word", word["word"], "transcription", word["transcription"], "--> fixed", latin_to_linear_b(word["transcription"], hyphens=True, debug=True))
+        word["word"] = latin_to_linear_b(word["transcription"], hyphens=True)
+
+def latin_to_linear_b(text, hyphens=False, debug=False):
     # split text by spaces and hyphens
     with open("sign-table.json", "r") as sign_file:
         sign_dict = json.load(sign_file)
     
+    ids_dict = sign_dict["ids"]
     numeral_dict = sign_dict["numerals"]
     sign_dict = sign_dict["text"]
     # text = text.split()
-    print(text)
+    # print(text)
+    # \pL = Letter (any)  \pM = Mark (any)
     text = filter(None, regex.split(r"([^\p{L}\p{M}0-9_\-\*])", text))
     # Print out the filtered text
     # for char in text:
@@ -168,15 +177,17 @@ def latin_to_linear_b(text):
                     escaped = "\\u" + part
                     print(escaped.encode().decode("unicode-escape"))
                     # this just prints, need to keep hold and recombine after conversion
-        syllabograms = word.split("-")
-        print(syllabograms)
+        syllabograms = regex.split("(-)", word)
+        if debug:
+            print("debug")
+            print(syllabograms)
         for syllabogram in syllabograms:
             if syllabogram.lower() in sign_dict:
                 output = output + sign_dict[syllabogram.lower()]
             elif syllabogram.startswith("*"):
                 try:
                     # search for number in syllabogram, ignores e.g. VAS
-                    output = output + sign_dict[regex.search(r'\d+', syllabogram)[0]]
+                    output = output + ids_dict[regex.search(r'\d+', syllabogram)[0]]
                 except:
                     output = output + syllabogram
             elif syllabogram.isnumeric():
@@ -191,7 +202,11 @@ def latin_to_linear_b(text):
                         # lookup each numeral and add to output
                         output = output + numeral_dict.get(str(ten_thousands), "") + numeral_dict.get(str(thousands), "") + numeral_dict.get(str(hundreds), "") + numeral_dict.get(str(tens), "") + numeral_dict.get(str(ones), "")
                 except:
+                    # couldn't convert numeral
                     output = output + syllabogram
+            elif syllabogram == "-" and not hyphens:
+                # don't add hyphens to output when not requested
+                output = output
             else:
                 output = output + syllabogram
     return output
@@ -231,4 +246,5 @@ print(latin_to_linear_b('''.1a                                                  
 # print_third_decl_noun("po-me", "po-me-no")
 # print_verb("pa")
 # label_lexicon()
-label_lexicon2()
+# label_lexicon2()
+fix_lexicon_transcriptions()

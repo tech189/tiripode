@@ -4,20 +4,20 @@
     "transcription": "*56-ra-ku-ja",
     "definition": "Duhoux 2008: \"\"presumably refers to the colour of the cloths; if identical with pa-ra-ku-ja it could perhaps be compared to terms like σμάραγδος 'emerald' or βαρακίς γλαύκινον ἱμάτιον 'bluish green piece of cloth' (Hesychius) (??)\"\" Bernabé & Luján 2008: \"\"with pa-ra-ku- colour\"\" Chadwick & Ventris 1973: nominative plural neuter description of textiles cf. pa-ra-ku-ja Bernabé Alberto and Eugenio Luján 2008 A Companion to Linear B: Mycenaean Greek Texts and their World (ed. Yves Duhoux and Anna Morpurgo Davies) “Mycenaean Technology” Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Duhoux Yves 2008 A Companion to Linear B: Mycenaean Greek Texts and their World \"\"Mycenaean Anthology\"\""
   },
-  "ai-ka-sa-ma": {
-    "word": "ai-𐀏-𐀭-𐀔",
-    "transcription": "ai-ka-sa-ma",
-    "definition": "points heads"
+  "a3-ka-sa-ma": {
+    "word": "𐁁-𐀏-𐀭-𐀔",
+    "transcription": "a3-ka-sa-ma",
+    "definition": "Chadwick & Ventris 1973: 'points (for darts and spears)' cf. ἔγχεος αἰχμή Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "ai-sa": {
-    "word": "ai-𐀭",
-    "transcription": "ai-sa",
-    "definition": "portion"
+  "a3-sa": {
+    "word": "𐁁-𐀭",
+    "transcription": "a3-sa",
+    "definition": "Chadwick & Ventris 1973: 'portion'? cf. αἴσα Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "ai-za": {
-    "word": "ai-𐀼",
-    "transcription": "ai-za",
-    "definition": "goat"
+  "a3-za": {
+    "word": "𐁁-𐀼",
+    "transcription": "a3-za",
+    "definition": "Palaeolexicon: goat"
   },
   "pe": {
     "word": "pe",
@@ -4579,11 +4579,6 @@
     "transcription": "a3-ka-na-jo",
     "definition": "Chadwick & Ventris 1973: \"\"apparently the name of a liquid abbreviated a3\"\" Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "a3-ka-sa-ma": {
-    "word": "𐁁-𐀏-𐀭-𐀔",
-    "transcription": "a3-ka-sa-ma",
-    "definition": "Chadwick & Ventris 1973: 'points (for darts and spears)' cf. ἔγχεος αἰχμή Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "a3-ke-u": {
     "word": "𐁁-𐀐-𐀄",
     "transcription": "a3-ke-u",
@@ -4609,11 +4604,6 @@
     "transcription": "a3-mi-re-we",
     "definition": "Chadwick & Ventris 1973: class of sheep \"\"distinguished from e-ka-ra-e-we\"\" Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "a3-sa": {
-    "word": "𐁁-𐀭",
-    "transcription": "a3-sa",
-    "definition": "Chadwick & Ventris 1973: 'portion'? cf. αἴσα Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "a3-te": {
     "word": "𐁁-𐀳",
     "transcription": "a3-te",
@@ -4633,11 +4623,6 @@
     "word": "𐁁-𐀺-𐀫",
     "transcription": "a3-wo-ro",
     "definition": "Chadwick & Ventris 1973: name of ox cf. αἰόλος Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "a3-za": {
-    "word": "𐁁-𐀼",
-    "transcription": "a3-za",
-    "definition": "Palaeolexicon: goat"
   },
   "a3-zo-ro": {
     "word": "𐁁-𐀿-𐀫",
