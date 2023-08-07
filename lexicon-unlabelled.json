@@ -1,6 +1,6 @@
 {
   "*56-ra-ku-ja": {
-    "word": "-𐁖-𐀨-𐀓-𐀊",
+    "word": "𐁖-𐀨-𐀓-𐀊",
     "transcription": "*56-ra-ku-ja",
     "definition": "Duhoux 2008: \"\"presumably refers to the colour of the cloths; if identical with pa-ra-ku-ja it could perhaps be compared to terms like σμάραγδος 'emerald' or βαρακίς γλαύκινον ἱμάτιον 'bluish green piece of cloth' (Hesychius) (??)\"\" Bernabé & Luján 2008: \"\"with pa-ra-ku- colour\"\" Chadwick & Ventris 1973: nominative plural neuter description of textiles cf. pa-ra-ku-ja Bernabé Alberto and Eugenio Luján 2008 A Companion to Linear B: Mycenaean Greek Texts and their World (ed. Yves Duhoux and Anna Morpurgo Davies) “Mycenaean Technology” Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Duhoux Yves 2008 A Companion to Linear B: Mycenaean Greek Texts and their World \"\"Mycenaean Anthology\"\""
   },
@@ -20,27 +20,27 @@
     "definition": "Palaeolexicon: goat"
   },
   "pe": {
-    "word": "pe",
+    "word": "𐀟",
     "transcription": "pe",
     "definition": "last years"
   },
   "Po-ti-ni-a": {
-    "word": "Po-𐀴-𐀛-𐀀",
+    "word": "𐀡-𐀴-𐀛-𐀀",
     "transcription": "Po-ti-ni-a",
     "definition": "goddess surname"
   },
   "qe": {
-    "word": "qe",
+    "word": "𐀤",
     "transcription": "qe",
     "definition": "and"
   },
   "a-*35-ka": {
-    "word": "𐀀-35-𐀏",
+    "word": "𐀀-*35-𐀏",
     "transcription": "a-*35-ka",
     "definition": "Chadwick & Ventris 1973: adjective describing textiles? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "a-*35-to": {
-    "word": "𐀀-35-𐀵",
+    "word": "𐀀-*35-𐀵",
     "transcription": "a-*35-to",
     "definition": "Chadwick & Ventris 1973: adjective describing textiles? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
@@ -1390,7 +1390,7 @@
     "definition": "arm"
   },
   "i-po-po-qo-i-qe": {
-    "word": "𐀂-𐀡-po-𐀦-𐀂-𐀤",
+    "word": "𐀂-𐀡-𐀡-𐀦-𐀂-𐀤",
     "transcription": "i-po-po-qo-i-qe",
     "definition": "Chadwick & Ventris 1973: 'horse-feeders ostlers' cf. ἰπποφορβός Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
@@ -3760,7 +3760,7 @@
     "definition": "lion"
   },
   "re-wo-to-ro-ro-ko-wo": {
-    "word": "𐀩-𐀺-𐀵-𐀫-ro-𐀒-𐀺",
+    "word": "𐀩-𐀺-𐀵-𐀫-𐀫-𐀒-𐀺",
     "transcription": "re-wo-to-ro-ro-ko-wo",
     "definition": "bath-pourers"
   },
