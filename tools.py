@@ -82,7 +82,7 @@ def latin_to_linear_b(text, hyphens=False, debug=False):
             else:
                 # output = output + syllabogram
                 converted = syllabogram
-            logger.debug(f"{syllabogram} --> {converted}")
+            # logger.debug(f"{syllabogram} --> {converted}")
             output = output + converted
     return output
 
@@ -125,8 +125,8 @@ def linear_b_to_latin(text):
             if converted == "":
                 converted = char
 
-            if char != " ":
-                logger.debug(f"{char} --> {converted}")
+            # if char != " ":
+            #     logger.debug(f"{char} --> {converted}")
             output = output + converted
 
         # remove trailing -, e.g. di-pa-

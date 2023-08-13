@@ -75,19 +75,19 @@ def main():
     logger.info("Converting conversion of PY Ta 641 back to Latin letters:")
     print(tools.linear_b_to_latin(tools.latin_to_linear_b(PY_Ta_641)))
 
-    logger.info("Converting 𐀐𐀩𐀪𐀡 to Latin letters:")
-    print(tools.linear_b_to_latin("𐀐𐀩𐀪𐀡"))
-    logger.info("Converting Po-ti-ni-a to Linear B:")
-    print(tools.latin_to_linear_b("Po-ti-ni-a"))
+    # logger.info("Converting 𐀐𐀩𐀪𐀡 to Latin letters:")
+    # print(tools.linear_b_to_latin("𐀐𐀩𐀪𐀡"))
+    # logger.info("Converting Po-ti-ni-a to Linear B:")
+    # print(tools.latin_to_linear_b("Po-ti-ni-a"))
 
-    logger.info("Printing out 1st, 2nd, 3rd declensions and verbs:")
-    print_first_decl_noun("ko-to-na")
-    print_second_decl_noun("do-e-ro")
-    print_third_decl_noun("po-me", "po-me-no")
-    print_verb("pa")
+    # logger.info("Printing out 1st, 2nd, 3rd declensions and verbs:")
+    # print_first_decl_noun("ko-to-na")
+    # print_second_decl_noun("do-e-ro")
+    # print_third_decl_noun("po-me", "po-me-no")
+    # print_verb("pa")
 
-    logger.info("Labelling the lexicon:")
-    prepare_data.run()
+    # logger.info("Labelling the lexicon:")
+    # prepare_data.run()
 
 if __name__ == "__main__":
     logger = log.logger

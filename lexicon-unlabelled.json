@@ -34,16 +34,6 @@
     "transcription": "qe",
     "definition": "and"
   },
-  "a-*35-ka": {
-    "word": "𐀀-*35-𐀏",
-    "transcription": "a-*35-ka",
-    "definition": "Chadwick & Ventris 1973: adjective describing textiles? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "a-*35-to": {
-    "word": "𐀀-*35-𐀵",
-    "transcription": "a-*35-to",
-    "definition": "Chadwick & Ventris 1973: adjective describing textiles? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "a-e-ti-to": {
     "word": "𐀀-𐀁-𐀴-𐀵",
     "transcription": "a-e-ti-to",
@@ -93,11 +83,6 @@
     "word": "𐀀-𐀎-𐀙",
     "transcription": "a-*65-na",
     "definition": "Chadwick & Ventris 1973: obscure (i.e. not defined) Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "a-ka-ra-no": {
-    "word": "𐀀-𐀏-𐀨-𐀜",
-    "transcription": "a-ka-ra-no",
-    "definition": "Bernabé & Luján 2008: 'without a top' \"\"showing that as one would expect the different components of a table (top legs etc.) were separate pieces and they were assembled only when the table had to be used.\"\" Chadwick & Ventris 1973: adjective describing a table 'headless'? cf. ἀκάρηνος Bernabé Alberto and Eugenio Luján 2008 A Companion to Linear B: Mycenaean Greek Texts and their World vol. I (ed. Yves Duhoux and Anna Morpurgo Davies) Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "a-ka-ta-jo": {
     "word": "𐀀-𐀏-𐀲-𐀍",
@@ -199,11 +184,6 @@
     "transcription": "a-ki-ti-ri-ja",
     "definition": "wild"
   },
-  "a-ki-ti-to": {
-    "word": "𐀀-𐀑-𐀴-𐀵",
-    "transcription": "a-ki-ti-to",
-    "definition": "Chadwick & Ventris 1973: adjective describing land 'not inhabited'? cf. ἄκτιτος ki-ti-me-na Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "a-ko-ro": {
     "word": "𐀀-𐀒-𐀫",
     "transcription": "a-ko-ro",
@@ -299,11 +279,6 @@
     "transcription": "a-mo-te-re",
     "definition": "Chadwick & Ventris 1973: \"\"probably dative singular or nominative dual of noun in -ter\"\" Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "a-mo-te-wi-ja": {
-    "word": "𐀀-𐀗-𐀳-𐀹-𐀊",
-    "transcription": "a-mo-te-wi-ja",
-    "definition": "Chadwick & Ventris 1973: adjective describing a ewer probably derivative of a-mo-te-wo Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "a-mo-te-wo": {
     "word": "𐀀-𐀗-𐀳-𐀺",
     "transcription": "a-mo-te-wo",
@@ -323,11 +298,6 @@
     "word": "𐀀-𐀙-𐀗-𐀵",
     "transcription": "a-na-mo-to",
     "definition": "not assembled"
-  },
-  "a-na-to": {
-    "word": "𐀀-𐀙-𐀵",
-    "transcription": "a-na-to",
-    "definition": "Chadwick & Ventris 1973: 'not inlaid' opposed to [[a-ja-me-na]] nominative plural feminine Chadwick & Ventris 1973: nomiatinve plural feminine with feminine endings in compound adjective Chadwick & Ventris 1973: shorter spelling of a-na-i-ta Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "a-ne-mo": {
     "word": "𐀀-𐀚-𐀗",
@@ -439,11 +409,6 @@
     "transcription": "a-pe-re",
     "definition": "Chadwick & Ventris 1973: meaning obscure Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "a-pe-te-me-ne": {
-    "word": "𐀀-𐀟-𐀳-𐀕-𐀚",
-    "transcription": "a-pe-te-me-ne",
-    "definition": "Chadwick & Ventris 1973: adjective describing [[pa-ko-to]] meaning obscure nominative dual Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "a-pe-ti-ra2": {
     "word": "𐀀-𐀟-𐀴-𐁈",
     "transcription": "a-pe-ti-ra2",
@@ -469,11 +434,6 @@
     "transcription": "a-pi-jo",
     "definition": "Aura Jorro 1985: antropónimo masculino nominativo cf. Ἀμφίων Aura Jorro 1985: genitivo de a-pi-jo cf. Ἀμφίοντος variante gráfica de a-pi-jo-to Aura Jorro Francisco 1985 Diccionario Micénico vol. I"
   },
-  "a-pi-ka-ra-do-jo": {
-    "word": "𐀀-𐀠-𐀏-𐀨-𐀈-𐀍",
-    "transcription": "a-pi-ka-ra-do-jo",
-    "definition": "Aura Jorro 1985: antropónimo masculino genitivo cf. quizá Ἀμφικλαδος mejor que Ἀμφιχάραδρος Ἀμφίκρατος ο Ἀμφίκραδος Aura Jorro Francisco 1985 Diccionario Micénico vol. I research notes ethnic adjective for ka-ra-do-wa-ta / ko-ra-do-ro?"
-  },
   "a-pi-po-re-we": {
     "word": "𐀀-𐀠-𐀡-𐀩-𐀸",
     "transcription": "a-pi-po-re-we",
@@ -483,11 +443,6 @@
     "word": "𐀀-𐀠-𐀦-𐀫",
     "transcription": "a-pi-qo-ro",
     "definition": "chamberlains"
-  },
-  "a-pi-qo-to": {
-    "word": "𐀀-𐀠-𐀦-𐀵",
-    "transcription": "a-pi-qo-to",
-    "definition": "Chadwick & Ventris 1973: table adjective obscure Bernabé 1998: 8-shaped cf. ἀμφίβροτος covering the whole man of a shield Bernabé & Luján 2008: table adjective cf. ἀμφι around + -τος verbal adjective from of βαίνω go   1. round   2. with a rim Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Bernabé Alberto 1998 Corolla Complutensis in memoriam J.S. Lasso de la Vega contexta (editors L. Gil M. Pastor Martínez R.M. Aguilar) \"\"Hom. ἀμφιβροτος y mic. a-pi-qo-to ¿un caso de etimología popular?\"\" Bernabé Alberto and Eugenio Luján 2008 A Companion to Linear B: Mycenaean Greek Texts and their World (editors Yves Duhoux and Anna Morpurgo Davies) \"\"Mycenaean Technology\"\""
   },
   "a-pi-re-we": {
     "word": "𐀀-𐀠-𐀩-𐀸",
@@ -679,16 +634,6 @@
     "transcription": "a-ro-wo",
     "definition": "Chadwick & Ventris 1973: meaning obscure building material? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "a-ro-za": {
-    "word": "𐀀-𐀫-𐀼",
-    "transcription": "a-ro-za",
-    "definition": "Chadwick & Ventris 1973: neut. plural adjective describing a tunic Chadwick & Ventris 1973: nominative singular masculine of a-ro-za Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "a-ro-zo": {
-    "word": "𐀀-𐀫-𐀿",
-    "transcription": "a-ro-zo",
-    "definition": "Chadwick & Ventris 1973: \"\"adjective describing a tunic\"\" Chadwick & Ventris 1973: neuter plural of a-ro-zo Appears as \"\"a-ro-zo 'ki-to'\"\" on KN Lc 536+. TELA: KN Lc Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "a-sa-mi-to": {
     "word": "𐀀-𐀭-𐀖-𐀵",
     "transcription": "a-sa-mi-to",
@@ -733,16 +678,6 @@
     "word": "𐀀-𐀳-𐀄-𐀐",
     "transcription": "a-te-u-ke",
     "definition": "Chadwick & Ventris 1973: 'unequipped'? cf. ἀτευχής Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "a-te-re-e-te-jo": {
-    "word": "𐀀-𐀳-𐀩-𐀁-𐀳-𐀍",
-    "transcription": "a-te-re-e-te-jo",
-    "definition": "Chadwick & Ventris 1973: adjective describing [[*246|BATH]] Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "a-te-re-te-a": {
-    "word": "𐀀-𐀳-𐀩-𐀳-𐀀",
-    "transcription": "a-te-re-te-a",
-    "definition": "Chadwick & Ventris 1973: adjective describing WHEELS? cf. a-te-re-e-te-jo Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "a-te-we": {
     "word": "𐀀-𐀳-𐀸",
@@ -799,11 +734,6 @@
     "transcription": "a-ze-ti-ri-ja",
     "definition": "Chadwick & Ventris 1973: \"\"description of women; probably variant spelling of a-ke-ti-ra2\"\" nominative plural feminine Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "a-ze-to": {
-    "word": "𐀀-𐀽-𐀵",
-    "transcription": "a-ze-to",
-    "definition": "Chadwick & Ventris 1973: adjective describing zo-wa? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "a-dwe-e": {
     "word": "𐀀-𐁃-𐀁",
     "transcription": "a-dwe-e",
@@ -854,11 +784,6 @@
     "transcription": "e-u-ru-wo-ta",
     "definition": "wide-eared"
   },
-  "e-da-e-u": {
-    "word": "𐀁-𐀅-𐀁-𐀄",
-    "transcription": "e-da-e-u",
-    "definition": "Chadwick & Ventris 1973: title or ethnic adjective? Chadwick & Ventris 1973: genitive of e-da-e-u Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "e-ka-ma-te": {
     "word": "𐀁-𐀏-𐀔-𐀳",
     "transcription": "e-ka-ma-te",
@@ -878,11 +803,6 @@
     "word": "𐀁-𐀏-𐀳-𐀍",
     "transcription": "e-ka-te-jo",
     "definition": "Chadwick & Ventris 1973: \"\"meaning obscure [...] perhaps epithet of chariot-frames\"\" Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "e-ka-te-re-ta": {
-    "word": "𐀁-𐀏-𐀳-𐀩-𐀲",
-    "transcription": "e-ka-te-re-ta",
-    "definition": "Chadwick & Ventris 1973: \"\"probably adjective describing chariot-frames; cf. a-te-re-te-a which suggests that this may be a compound with ekh- cf. also [[e-te-re-ta]].\"\" Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "e-ke": {
     "word": "𐀁-𐀐",
@@ -979,11 +899,6 @@
     "transcription": "e-na-po-na",
     "definition": "Chadwick & Ventris 1973: meaning obscure Appears as \"\"'e-na-po-na  o-nu  pa-i-ti-jo' e-ti-wa-ja-qe\"\" on KN Od 681. LANA: KN Od? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "e-na-ri-po-to": {
-    "word": "𐀁-𐀙-𐀪-𐀡-𐀵",
-    "transcription": "e-na-ri-po-to",
-    "definition": "Chadwick & Ventris 1973: 'oiled painted' cf. ἐνάλειπτος \"\"verbal adjective describing chariot frame\"\" Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "e-ne-e-si": {
     "word": "𐀁-𐀚-𐀁-𐀯",
     "transcription": "e-ne-e-si",
@@ -1029,11 +944,6 @@
     "transcription": "e-ni",
     "definition": "Chadwick & Ventris 1973: \"\"context obscure\"\" cf. e-ni-qe Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "e-ni-qe": {
-    "word": "𐀁-𐀛-𐀤",
-    "transcription": "e-ni-qe",
-    "definition": "Chadwick & Ventris 1973: \"\"probably not adjective describing CLOTH but connective\"\" 'and there is (are) among them' cf. ἔνεστί τε ἔνι Appears as \"\"e-ni-qe  pe-ne-we-ta\"\" on KN L 593+. Appears as \"\"e-ni-qe [[e-ra-pe-me-ne]] 'nu-wa-ja'\"\" on KN L 647+. Appears as \"\"e-ni-qe  nu-wa-i-ja\"\" on KN L 5910+. *161: KN L TELA: KN L TUN+KI: KN L Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "e-ni-to-wo": {
     "word": "𐀁-𐀛-𐀵-𐀺",
     "transcription": "e-ni-to-wo",
@@ -1053,11 +963,6 @@
     "word": "𐀁-𐀠",
     "transcription": "e-pi",
     "definition": "on upon"
-  },
-  "e-pi-da-to": {
-    "word": "𐀁-𐀠-𐀅-𐀵",
-    "transcription": "e-pi-da-to",
-    "definition": "Chadwick & Ventris 1973: \"\"description of bronze probably adjective: 'distributed'\"\" cf. ἀνά-δαστος Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "e-pi-de-da-to": {
     "word": "𐀁-𐀠-𐀆-𐀅-𐀵",
@@ -1189,11 +1094,6 @@
     "transcription": "e-re-pa",
     "definition": "Chadwick & Ventris 1973: ivory cf. ἐλέφας (Iliad V 583) cf. (-ta) ko-ma-we-ta Chadwick & Ventris 1973: accusative? of e-re-pa cf. (-te) e-ri-no-wo-te ko-ma-we-te Chadwick & Ventris 1973: dative-instrumental singular of e-re-pa cf. (-to) e-ri-no-wo-to ko-ma-we-to qe-qi-no-to Chadwick & Ventris 1973: genitive of e-re-pa Palaeolexicon: elephant   Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "e-re-pa-te-jo": {
-    "word": "𐀁-𐀩-𐀞-𐀳-𐀍",
-    "transcription": "e-re-pa-te-jo",
-    "definition": "Chadwick & Ventris 1973: adjective \"\"of an elephant\"\" cf. ἐλεφάντειος (Diosc.) Chadwick & Ventris 1973: feminine of e-re-pa-te-jo Chadwick & Ventris 1973: instrumental plural feminine of e-re-pa-te-jo Chadwick & Ventris 1973: instrumental plural masculine or neuter of e-re-pa-te-jo Chadwick & Ventris 1973: variant of e-re-pa-te-jo Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "e-re-pa-to": {
     "word": "𐀁-𐀩-𐀞-𐀵",
     "transcription": "e-re-pa-to",
@@ -1288,11 +1188,6 @@
     "word": "𐀁-𐀳-𐀍",
     "transcription": "e-te-jo",
     "definition": "Chadwick & Ventris 1973: \"\"description of amphoras\"\" *209VAS: KN Gg Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "e-ti-we": {
-    "word": "𐀁-𐀴-𐀸",
-    "transcription": "e-ti-we",
-    "definition": "Melena 1983: e-ti-scented and / or softened although \"\"the precise identification of e-ti- reminds to be found\"\" Chadwick & Ventris 1973: adjective describing olive oil Lejeune 1958: probably a plant cf. ἔρτις κρημνός Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Lejeune 1958 TBD Melena José 1983 Minos vol. 18 \"\"Olive Oil and Other Sorts of Oil in the Mycenaean Tablets\"\""
   },
   "e-to-ki-ja": {
     "word": "𐀁-𐀵-𐀑-𐀊",
@@ -1458,11 +1353,6 @@
     "word": "𐀃-𐀅-𐀃",
     "transcription": "o-da-o",
     "definition": "too also"
-  },
-  "o-da-ke-we-ta": {
-    "word": "𐀃-𐀅-𐀐-𐀸-𐀲",
-    "transcription": "o-da-ke-we-ta",
-    "definition": "Chadwick & Ventris 1973: \"\"adjective describing wheels and cloths: perhaps odakwenta 'toothed' (i.e. with tooth-like decoration)\"\" Chadwick & Ventris 1973: variant spelling of o-da-ke-we-ta Chadwick & Ventris 1973: variant form of o-da-ke-we-ta Chadwick & Ventris 1973: variant spelling of [[o-da-tu-we-ta]] Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "o-da-a2": {
     "word": "𐀃-𐀅-𐁀",
@@ -1689,11 +1579,6 @@
     "transcription": "o-re-o-po",
     "definition": "Chadwick & Ventris 1973: obscure (i.e. not defined) Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "o-re-ne-ja": {
-    "word": "𐀃-𐀩-𐀚-𐀊",
-    "transcription": "o-re-ne-ja",
-    "definition": "Chadwick & Ventris 1973: \"\"adjective describing cloths\"\" 'decorated with angular pattern'? cf. ὠλένη Chadwick & Ventris 1973: variant spelling of o-re-ne-ja Chadwick & Ventris 1973: dual of o-re-ne-ja TELA: KN L *161: KN L KN Ld Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "o-ri-ko": {
     "word": "𐀃-𐀪-𐀒",
     "transcription": "o-ri-ko",
@@ -1723,11 +1608,6 @@
     "word": "𐀄-𐀈",
     "transcription": "u-do",
     "definition": "Chadwick & Ventris 1973: \"\"annotation to vessel labelled with PO\"\"; 'water'? cf. ὔδωρ [[u-do-ro]] Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "u-pi-ja-ki-ri-jo": {
-    "word": "𐀄-𐀠-𐀊-𐀑-𐀪-𐀍",
-    "transcription": "u-pi-ja-ki-ri-jo",
-    "definition": "Chadwick & Ventris 1973: probably ethnic adjective of [[u-pa-ra-ki-ri-ja]] Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "u-po": {
     "word": "𐀄-𐀡",
@@ -1938,11 +1818,6 @@
     "word": "𐀇-𐀞",
     "transcription": "di-pa",
     "definition": "Duhoux 2008: 'beaker' cf. δέπας \"\"vowel alternation (dipas ~ δέπας) suggests that this word may be a loan.\"\" Chadwick & Ventris 1973: vessel cf. δέπας (Iliad XI 632+) \"\"often in early use a large vessel not a drinking cup\"\" Palaeolexicon: cup Iliad I.584: δέπας ἀμφικύπελλον 'two-handled cup' Iliad IV.262 IX.203 IX.224: δέπας 'cup' Iliad VI.220: χρύσεον δέπας ἀμφικύπελλον 'two-handled cup of gold' Chadwick & Ventris 1973: nominative dual of di-pa Appears as \"\"qa-si-re-wi-ja  di-pa  a-no-wo-to\"\" on KN K 875. *202VAS: KN K PY Ta Iliad IV.3: χρυσέοις δεπάεσσι 'golden goblets' Iliad VIII.160: πλείοις δεπάεσσι 'full cups' Iliad IX.176: δεπάεσσι 'cups' Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Duhoux Yves 2008 A Companion to Linear B: Mycenaean Greek Texts and their World vol. I (ed. Yves Duhoux and Anna Morpurgo Davies) \"\"Mycenaean Anthology\"\" Homer 2003 Iliad (trans. A.T. Murray ed. William F. Wyatt)"
-  },
-  "di-pi-si-je-wi-jo": {
-    "word": "𐀇-𐀠-𐀯-𐀋-𐀹-𐀍",
-    "transcription": "di-pi-si-je-wi-jo",
-    "definition": "Chadwick & Ventris 1973: adjective derived from di-pi-si-jo Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "di-pi-si-jo": {
     "word": "𐀇-𐀠-𐀯-𐀍",
@@ -2164,11 +2039,6 @@
     "transcription": "ka-ma-e-u",
     "definition": "Chadwick & Ventris 1973: 'man who has a ka-ma holding' Chadwick & Ventris 1973: dative singular and nominative plural of ka-ma-e-u Appears as \"\".1a wo-ze-qe .1b [[e-u-ru-wo-ta|e-u-ru-wo-(ta)]]  te-o-jo  do-e-ro  ka-ma-e-u[ ]to-so-de  pe-mo GRA 1[\"\" on PY Eb 156+. Appears as \"\"]re-u[ ](to)-po-qo  ka-ma-e-u\"\" on PY Eb 177+. Appears as \"\"](ro2)  ka-ma-e-u  mi-ka-ta  pa-da-je-u  e-ke-qe[\"\" PY Eb 839. Appears as \"\"sa-sa-wo  e-ke-qe  o-na-to  ka-ma-e-u\"\" on PY Eb 842. Appears as \"\"ka-ma-e-u  wo-zo  to-so-de pe-mo GRA T 3\"\" on PY Eb 862. Appears as \"\"ka-ma-e-we  o-na-ta  e-ko-te  ke-ke-me-na-o  ko-to-na-o  wo-zo-te  to-so  pe-mo GRA 30 T 2 V 3\"\" on PY Ed 236. Appears as \"\"me-re-u  i-je-re-ja  do-e-ro  o-na-to  e-ke  pa-ro  [ ](re)-ma-ta  ka-ma-e-(we)[][[o-u-qe|o-u-qe]]  wo-ze  to-so pe-mo GRA[ ] V 2\"\" on PY Ep 539. Appears as \"\"]me-na  ko-to-na  ka-ma-e-u  wo-ze-qe  to-so pe-mo[\"\" on PY Ep 613+. Appears as \"\"]ke-re-u  i-je-ro-wo-ko  ka-ma-e-u  o-na-to e-ke  wo-ze-qe to-so pe-mo GRA 1\"\" on PY Ep 613+. Appears as \"\"]o-na-to  e-ke  ka-ma-e-u  e-pi-qe  [[to-e|to-me]]  [[te-ra-pi-ke|te-ra-(pi)[]] ]to-so  pe-mo GRA 1 T 5\"\" on PY Ep 613+. Appears as \"\"(ko)[ ]ka-ta  [[pa-de-we-u]]  ka-ma-e-u  e-ke-qe  wo-ze-qe  to-so  pe-mo GRA T 5\"\" on PY Ep 613+. GRA: PY Eb PY Ed PY Ep VIR: PY An Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "ka-ma-jo": {
-    "word": "𐀏-𐀔-𐀍",
-    "transcription": "ka-ma-jo",
-    "definition": "McArthur 1993: ethnic adjective presupposing an unattested place name of ka-ma Chadwick & Ventris 1973: \"\"description of men?\"\" nominative plural VIR: KN Am Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek McArthur Jennifer 1993 Suplementos a MINOS núm. 9 \"\"Place-Names in the Knossos Tablets Identification and Location\"\""
-  },
   "ka-na-ko": {
     "word": "𐀏-𐀙-𐀒",
     "transcription": "ka-na-ko",
@@ -2188,11 +2058,6 @@
     "word": "𐀏-𐀚-𐀊",
     "transcription": "ka-ne-ja",
     "definition": "Chadwick & Ventris 1973: 'made of basketry' cf. κάνεον κάνειον 'basket' Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "ka-pa-jo": {
-    "word": "𐀏-𐀞-𐀍",
-    "transcription": "ka-pa-jo",
-    "definition": "McArthur 1993: ethnic adjective of a place-name ka-pa \"\"perhaps attested in E(1).\"\" Chadwick & Ventris 1973: \"\"Description of three men perhaps ethnic of ka-pa.\"\" Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek McArthur Jennifer 1993 Suplementos a MINOS núm. 9 \"\"Place-Names in the Knossos Tablets Identification and Location\"\""
   },
   "ka-pa-ra": {
     "word": "𐀏-𐀞-𐀨",
@@ -2439,20 +2304,10 @@
     "transcription": "ke-re-a2",
     "definition": "limbs legs"
   },
-  "ke-ri-mi-ja": {
-    "word": "𐀐-𐀪-𐀖-𐀊",
-    "transcription": "ke-ri-mi-ja",
-    "definition": "Chadwick & Ventris 1973: \"\"perhaps an adjective describing women\"\" Appears as \"\"ke-ri-mi-ja tu-na-no\"\" on KN Lc 535+. Appears as \"\"me-ta-pa  ke-ri-mi-ja  do-qe-ja  ki-ri-te-wi-ja\"\" on PY An 607. Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "ke-ro-si-ja": {
     "word": "𐀐-𐀫-𐀯-𐀊",
     "transcription": "ke-ro-si-ja",
     "definition": "Duhoux 2008: 'Elders' 'council of Elders' Shelmerdine 2008: 'council of elders' Chadwick & Ventris 1973: \"\"a group of men under a qa-si-re-u probably 'council of elders'\"\" cf. γερουσία Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Duhoux Yves 2008 A Companion to Linear B: Mycenaean Greek Texts and their World vol. I (ed. Yves Duhoux and Anna Morpurgo Davies) \"\"Mycenaean Anthology\"\" Shelmerdine Cynthia W. 2008 A Companion to Linear B: Mycenaean Greek Texts and their World vol. I (ed. Yves Duhoux and Anna Morpurgo Davies) \"\"Mycenaean Society\"\""
-  },
-  "ke-ro-ta": {
-    "word": "𐀐-𐀫-𐀲",
-    "transcription": "ke-ro-ta",
-    "definition": "Chadwick & Ventris 1973: adjective describing cloth 'old'? cf. γέρον σάκος (Odyssey XXII 184) *161: KN Ld Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "ke-se-ni-wi-jo": {
     "word": "𐀐-𐀮-𐀛-𐀹-𐀍",
@@ -2483,16 +2338,6 @@
     "word": "𐀑-𐀛-𐀇-𐀊",
     "transcription": "ki-ni-di-ja",
     "definition": "women from knidos"
-  },
-  "ki-ri-jo-te": {
-    "word": "𐀑-𐀪-𐀍-𐀳",
-    "transcription": "ki-ri-jo-te",
-    "definition": "Chadwick & Ventris 1973: sheep adjective Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "ki-ri-ta": {
-    "word": "𐀑-𐀪-𐀲",
-    "transcription": "ki-ri-ta",
-    "definition": "Duhoux 2011: 1. substantive 'barley' cf. κριθή 2. adjective textile qualifier 'anointed' cf. χριστός Chadwick & Ventris 1973: 1. (KN G) 'barley' cf. κριθή 2. (KN Ld) 'anointed painted (with red spots?)' cf. χριστός KN G: LUNA KN Ld: TELA Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Duhoux Yves 2011 A Companion to Linear B: Mycenaean Greek Texts and their World vol. II \"\"Interpreting the Linear B Records: Some Guidelines\"\""
   },
   "ki-ri-te-wi-ja": {
     "word": "𐀑-𐀪-𐀳-𐀹-𐀊",
@@ -2584,11 +2429,6 @@
     "transcription": "ko-ro-ja-ne",
     "definition": ""
   },
-  "ko-ro-ki-ja": {
-    "word": "𐀒-𐀫-𐀑-𐀊",
-    "transcription": "ko-ro-ki-ja",
-    "definition": "Chadwick & Ventris 1973: feminine ethnic adjective Chadwick & Ventris 1973: genitive plural of ko-ro-ki-ja Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "ko-ro-ku-ra-i-jo": {
     "word": "𐀒-𐀫-𐀓-𐀨-𐀂-𐀍",
     "transcription": "ko-ro-ku-ra-i-jo",
@@ -2618,11 +2458,6 @@
     "word": "𐀒-𐀬",
     "transcription": "ko-ru",
     "definition": "helmet"
-  },
-  "ko-ru-we-ja": {
-    "word": "𐀒-𐀬-𐀸-𐀊",
-    "transcription": "ko-ru-we-ja",
-    "definition": "Chadwick & Ventris 1973: \"\"feminine plural adjective describing textile-workers\"\" cf. [[ko-we-ja]]; cf. ko-ro-we-ja? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "ko-so-u-to": {
     "word": "𐀒-𐀰-𐀄-𐀵",
@@ -2737,7 +2572,7 @@
   "ku-ru-so": {
     "word": "𐀓-𐀬-𐀰",
     "transcription": "ku-ru-so",
-    "definition": "Palaeolexicon: gold Wiktionary: gold cf. χρυσός Chadwick & Ventris 1973: instrumental singular \"\"with gold\"\" cf. i-je-ro-jo Palaeolexicon: golden Aura Jorro 1985: de materia de oro Chadwick & Ventris 1973: genitive singular \"\"of the gold\"\" Chadwick & Ventris 1973: instrumental plural feminine adjective \"\"golden\"\" cf. (-wo-ko) a-pu-ko-wo-ko de-ku-tu-wo-ko [[e-ko-so-wo-ko]] e-to-wo-ko i-je-ro-wo-ko ko-wi-ro-wo-ko ku-wa-no-wo-ko no-ri-wo-ko re-wo-to-ro-wo-ko to-ko-so-wo-ko to-ro-no-wo-ko Shelmerdine 2008: goldsmith Chadwick & Ventris 1973: goldsmiths cf. χρυσοχόος (Odyssey III 425+) Aura Jorro Francisco 1985 Diccionario Micénico vol. I Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Shelmerdine Cynthia 2008 A Companion to Linear B: Mycenaean Greek Texts and their World vol. I (ed. Yves Duhoux and Anna Morpurgo Davies) \"\"Mycenaean Society\"\""
+    "definition": "gold"
   },
   "ku-ru-so-jo": {
     "word": "𐀓-𐀬-𐀰-𐀍",
@@ -2768,11 +2603,6 @@
     "word": "𐀓-𐀱-𐀵-𐀫-𐀣",
     "transcription": "ku-su-to-ro-qa",
     "definition": "Chadwick & Ventris 1973: aggregate total cf. συστροφή Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "ku-te-so": {
-    "word": "𐀓-𐀳-𐀰",
-    "transcription": "ku-te-so",
-    "definition": "Bernabé & Luján 2008: 'ebony' cf. κύτισος Bernabé & Luján 2008: adjective from ku-te-so Chadwick & Ventris 1973: 'made of ebony' nominative singular and instrumental plural Chadwick & Ventris 1973: error for ku-te-se-jo Bernabé Alberto and Eugenio R. Luján 2008 A Companion to Linear B: Mycenaean Greek Texts and their World vol. I (ed. Yves Duhoux and Anna Morpurgo Davies) “Mycenaean Technology” Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "ku-wa-ni-jo-qe": {
     "word": "𐀓-𐀷-𐀛-𐀍-𐀤",
@@ -2859,11 +2689,6 @@
     "transcription": "me-u-jo",
     "definition": "less smaller"
   },
-  "me-ki-ta": {
-    "word": "𐀕-𐀑-𐀲",
-    "transcription": "me-ki-ta",
-    "definition": "Chadwick & Ventris 1973: \"\"adjective describing cloths\"\" 'of the largest size'? cf. μέγιστος Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "me-ki-to-ki-ri-ta": {
     "word": "𐀕-𐀑-𐀵-𐀑-𐀪-𐀲",
     "transcription": "me-ki-to-ki-ri-ta",
@@ -2883,11 +2708,6 @@
     "word": "𐀕-𐀜",
     "transcription": "me-no",
     "definition": "month"
-  },
-  "me-no-e-ja": {
-    "word": "𐀕-𐀜-𐀁-𐀊",
-    "transcription": "me-no-e-ja",
-    "definition": "Chadwick & Ventris 1973: \"\"adjective describing a table\"\" meaning obscure Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "me-po": {
     "word": "𐀕-𐀡",
@@ -2924,11 +2744,6 @@
     "transcription": "me-ri-te-wo",
     "definition": "Chadwick & Ventris 1973: occupational term 'bee-keeper'? cf. μελιτ- 'honey' Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "me-ri-ti-jo": {
-    "word": "𐀕-𐀪-𐀴-𐀍",
-    "transcription": "me-ri-ti-jo",
-    "definition": "Chadwick & Ventris 1973: adjective 'honeyed' cf. οἶνος μελίτειος Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "me-sa-ta": {
     "word": "𐀕-𐀭-𐀲",
     "transcription": "me-sa-ta",
@@ -2948,11 +2763,6 @@
     "word": "𐀕-𐀲-𐀑-𐀴-𐀲",
     "transcription": "me-ta-ki-ti-ta",
     "definition": "Chadwick & Ventris 1973: 'fellow or new settlers' cf. [[ki-ti-ta]] μέτοικος μετανάστης Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "me-ta-pa": {
-    "word": "𐀕-𐀲-𐀞",
-    "transcription": "me-ta-pa",
-    "definition": "Chadwick & Ventris 1973: Hither Province town Shelmerdine 1973: in a special town division with pe-to-no and pi-*82 Chadwick & Ventris 1973: ethnic adjective of me-ta-pa Chadwick & Ventris 1973: allative of me-ta-pa Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Shelmerdine Cynthia 1973 American Journal of Archaeology (AJA) 79 “The Pylos Ma tablets reconsidered”"
   },
   "me-ta-qe": {
     "word": "𐀕-𐀲-𐀤",
@@ -3054,11 +2864,6 @@
     "transcription": "ne-wa",
     "definition": "Palaeolexicon: new Chadwick & Ventris 1973: masculine and neuter \"\"young\"\" cf. νίος (Homer) Chadwick & Ventris 1973: genitive singular of ne-wo Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "ne-we-wi-ja": {
-    "word": "𐀚-𐀸-𐀹-𐀊",
-    "transcription": "ne-we-wi-ja",
-    "definition": "Chadwick & Ventris 1973: \"\"description of women textile workers\"\" Ruijgh 1967: ethnic adjective cf. Νεƒήƒιος Olivier 1966: occupational term (Ruijgh 1967 has reservations due to absence of expected -e-ja suffix) Palmer 1963: ethnic adjective Chadwick & Ventris 1973: genitive plural of ne-we-wi-ja Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Palmer Leonard R. 1963 Interpretation of Mycenaean Greek Texts Olivier Jean-Pierre 1966 Proceedings of the Cambridge Colloquium on Mycneaean Studies (CCMS) held at Cambridge 8-12 April 1965 (ed. Leonard R. Palmer and John Chadwick) «388 raccords de fragments dans les tablettes de Cnossos» Ruijgh C.J. 1967 Études sur la grammaire et le vocabulaire du grec mycénien"
-  },
   "no-do-ro-we": {
     "word": "𐀜-𐀈-𐀫-𐀸",
     "transcription": "no-do-ro-we",
@@ -3073,11 +2878,6 @@
     "word": "𐀜-𐀪-𐀺-𐀒",
     "transcription": "no-ri-wo-ko",
     "definition": "Chadwick & Ventris 1973: nominative plural feminine occupational Chadwick & Ventris 1973: genitive singular of no-ri-wo-ko Chadwick & Ventris 1973: perhaps dative singular of no-ri-wo-ko Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "nu-wa-ja": {
-    "word": "𐀝-𐀷-𐀊",
-    "transcription": "nu-wa-ja",
-    "definition": "Chadwick & Ventris 1973: \"\"adjective describing cloth\"\" Appears as \"\"e-ni-qe e-ra-pe-me-na 'nu-wa-ja'\"\" on KN L 647+. Appears as \"\"e-ni-qe 'nu-wa-ja'\"\" on KN L 5910+. TELA: KN L TUN+KI: KN L Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "pa-e-o-te": {
     "word": "𐀞-𐀁-𐀃-𐀳",
@@ -3203,11 +3003,6 @@
     "word": "𐀟-𐀂",
     "transcription": "pe-i",
     "definition": "Chadwick & Ventris 1973: \"\"them\"\" cf. Homeric σφι(ν) Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "pe-de-we-sa": {
-    "word": "𐀟-𐀆-𐀸-𐀭",
-    "transcription": "pe-de-we-sa",
-    "definition": "Bernabé & Luján 2008: pedwessa \"\"has legs\"\" cf. πούς 'foot' Chadwick & Ventris 1973: adjective describing a portable hearth \"\"equipped with feet\"\" Bernabé Alberto and Eugenio Luján 2008 A Companion to Linear B: Mycenaean Greek Texts and their World (ed. Yves Duhoux and Anna Morpurgo Davies) “Mycenaean Technology” Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "pe-di-je-we": {
     "word": "𐀟-𐀇-𐀋-𐀸",
@@ -3343,11 +3138,6 @@
     "word": "𐀡-𐀓-𐀲",
     "transcription": "po-ku-ta",
     "definition": "McArthur 1993 Melena 1975 Chadwick & Ventris 1973: occupational term abbreviated to po Ruijgh 2011 1992: 'breeder of small livestock' Chadwick & Ventris 1973: \"\"class of men\"\" Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek McArthur Jennifer 1993 Suplementos a MINOS núm. 9 \"\"Place-Names in the Knossos Tablets Identification and Location\"\" Melena José 1975 Suplementos a MINOS núm. 5 \"\"Studies on some Mycenaean inscriptions from Knossos dealing with textiles\"\" Ruijgh C.J. 2011 A Companion to Linear B: Mycenaean Greek Texts and their World vol. II (ed. Yves Duhoux and Anna Morpurgo Davies) \"\"Mycenaean and Homeric Language\"\" Ruijgh C.J. 1992 Mykenaïka \"\"po-ku-ta et po-ku-te-ro dérivés de *poku 'petit bétail'\"\""
-  },
-  "po-ku-te-ro": {
-    "word": "𐀡-𐀓-𐀳-𐀫",
-    "transcription": "po-ku-te-ro",
-    "definition": "Chadwick & Ventris 1973: adjective of po-ku-ta Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "po-me": {
     "word": "𐀡-𐀕",
@@ -3744,11 +3534,6 @@
     "transcription": "re-qo-me-no",
     "definition": "Chadwick & Ventris 1973: 'left behind or over' cf. o-pi-ro-qo [[pe-ri-ro-qo]] οί δ᾽οῖοι λείπονται Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "re-ri-jo": {
-    "word": "𐀩-𐀪-𐀍",
-    "transcription": "re-ri-jo",
-    "definition": "McArthur 1993: uncertain ethnic adjective Chadwick & Ventris 1973: ethnic adjective? cf. Λέριος? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek McArthur Jennifer 1993 Suplementos a MINOS núm. 9 \"\"Place-Names in the Knossos Tablets Identification and Location\"\""
-  },
   "re-si": {
     "word": "𐀩-𐀯",
     "transcription": "re-si",
@@ -3869,11 +3654,6 @@
     "transcription": "sa-pi-de",
     "definition": "Chadwick & Ventris 1973: countable commodity perhaps boxes cf. σαρπίς σαρπός Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "sa-pi-ti-ne-we-jo": {
-    "word": "𐀭-𐀠-𐀴-𐀚-𐀸-𐀍",
-    "transcription": "sa-pi-ti-ne-we-jo",
-    "definition": "Chadwick & Ventris 1973: possibly an adjective of sa-pi-ti-nu-wo? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "sa-sa-ma": {
     "word": "𐀭-𐀭-𐀔",
     "transcription": "sa-sa-ma",
@@ -3977,7 +3757,7 @@
   "te-o": {
     "word": "𐀳-𐀃",
     "transcription": "te-o",
-    "definition": "Hiller 2011: 'god' Chadwick & Ventris 1973: god goddess Pylos  (as te-o-jo do-e-ra/do-e-ro) Hiller 2011: 'god's servant' Chadwick & Ventris: \"\"always with do-e-ro do-e-ra\"\"; genitive of te-o Knossos Pylos  Iliad III.295: \"\"[...] ἠδ᾽ ἔυχοντο θεοις αἰειγενέτησιν.\"\" and made prayer to the gods who are for ever. Knossos Pylos (as \"\"ma-te-re te-i-ja\"\") Duhoux 2011: adjective in 'to the divine mother' Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Duhoux Yves 2011 A Companion to Linear B: Mycenaean Greek Texts and their World vol. II \"\"Interpreting the Linear B Records: Some Guidelines\"\" Hiller Stefan 2011 A Companion to Linear B: Mycenaean Greek Texts and their World vol. II \"\"Religion and Cult\"\" Homer 2003 Iliad (trans. A.T. Murray ed. William F. Wyatt)"
+    "definition": "god"
   },
   "te-o-i": {
     "word": "𐀳-𐀃-𐀂",
@@ -4003,11 +3783,6 @@
     "word": "𐀳-𐀕-𐀜",
     "transcription": "te-me-no",
     "definition": "sacred precinct temple"
-  },
-  "te-mi-dwe": {
-    "word": "𐀳-𐀖-𐁃",
-    "transcription": "te-mi-dwe",
-    "definition": "Bernabé & Luján 2008: joining of the spoke to the hub on a wheel with \"\"some kind of wedges or chocks\"\" Chadwick & Ventris 1973: adjective describing wheels (ROTA) \"\"provided with a termis (border edge flange?)\"\" cf. τερμιόεις (Iliad XVI 803+) Chadwick & Ventris 1973: nominative plural neuter of te-mi-dwe Chadwick & Ventris 1973: nominative dual of te-mi-dwe Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Bernabé Alberto and Eugenio Luján 2008 A Companion to Linear B: Mycenaean Greek Texts and their World (ed. Yves Duhoux and Anna Morpurgo Davies) \"\"Mycenaean Technology\"\""
   },
   "te-mi-dwe-ta": {
     "word": "𐀳-𐀖-𐁃-𐀲",
@@ -4098,11 +3873,6 @@
     "word": "𐀴-𐀪-𐀵",
     "transcription": "ti-ri-to",
     "definition": "third"
-  },
-  "ti-wa-ti-ja": {
-    "word": "𐀴-𐀷-𐀴-𐀊",
-    "transcription": "ti-wa-ti-ja",
-    "definition": "Chadwick & Ventris 1973: ethnic adjective? cf. [[ti-nwa-si-jo|ti-nwa-ti-ja-o]] [[ti-nwa-si-jo]] Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "to-o": {
     "word": "𐀵-𐀃",
@@ -4324,11 +4094,6 @@
     "transcription": "wa-na-sa",
     "definition": "queen"
   },
-  "wa-na-se-wi-jo": {
-    "word": "𐀷-𐀙-𐀮-𐀹-𐀍",
-    "transcription": "wa-na-se-wi-jo",
-    "definition": "Chadwick & Ventris 1973: adjective form of [[wa-na-so-i]]? Chadwick & Ventris 1973: feminine singular or neuter plural of wa-na-se-wi-jo Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "wa-no": {
     "word": "𐀷-𐀜",
     "transcription": "wa-no",
@@ -4338,11 +4103,6 @@
     "word": "𐀷-𐀶",
     "transcription": "wa-tu",
     "definition": "urban"
-  },
-  "we-a-re-pe": {
-    "word": "𐀸-𐀀-𐀩-𐀟",
-    "transcription": "we-a-re-pe",
-    "definition": "Chadwick & Ventris 1973: adjective describing oil probably 'for anointing' Chadwick & Ventris 1973: alternative spelling of we-a-re-pe Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "we-e-wi-ja": {
     "word": "𐀸-𐀁-𐀹-𐀊",
@@ -4579,16 +4339,6 @@
     "transcription": "a3-ka-na-jo",
     "definition": "Chadwick & Ventris 1973: \"\"apparently the name of a liquid abbreviated a3\"\" Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
-  "a3-ke-u": {
-    "word": "𐁁-𐀐-𐀄",
-    "transcription": "a3-ke-u",
-    "definition": "Chadwick & Ventris 1973: \"\"nominative singular describing [[t-ri-po-de|TRIPOD]] cauldron despite failure of concord with dual [[ti-ri-po-de]] [...] adjective 'with goat-head protomes'; or cf. αῖγες 'high waves'?\"\" Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "a3-ki-de-ja": {
-    "word": "𐁁-𐀑-𐀆-𐀊",
-    "transcription": "a3-ki-de-ja",
-    "definition": "Chadwick & Ventris 1973: adjective describing FLAX Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
   "a3-ki-no-o": {
     "word": "𐁁-𐀑-𐀜-𐀃",
     "transcription": "a3-ki-no-o",
@@ -4608,11 +4358,6 @@
     "word": "𐁁-𐀳",
     "transcription": "a3-te",
     "definition": "Chadwick & Ventris 1973: nominative singular of a3-te-re? cf. (*-te *-te-re) a-de-te-re a-ke-te-re ko-re-te-re ma-te-re pi-ri-je-te-re ra-pte-re tu-ka-te-re Chadwick & Ventris 1973: 'inlayers'? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
-  },
-  "a3-tu-ti-ja": {
-    "word": "𐁁-𐀶-𐀴-𐀊",
-    "transcription": "a3-tu-ti-ja",
-    "definition": "Chadwick & Ventris 1973: ethnic adjective? Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek"
   },
   "a3-wa": {
     "word": "𐁁-𐀷",

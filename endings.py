@@ -2,11 +2,11 @@ endings = {
     "nouns": {
         "1st declension": {
             # TODO first decl masc!
-            # TODO add allative?
             "singular": {
                 # case: [syllabograms, pronunciation]
                 "nominative": ["a", "ā̆"],
                 "accusative": ["a", "ā̆n"],
+                "allative": ["a-de", "ā̆n-de"],
                 "genitive": ["a", "ās"],
                 "dative": ["a", "āi"],
                 # Del Freo-Perna 2019 pronunciation is not certain for loc & ins
@@ -24,6 +24,7 @@ endings = {
             "plural": {
                 "nominative": ["a/a3", "ai"],  # TODO check when a3 appears
                 "accusative": ["a", "āns"],
+                "allative": ["a-de", "ānsde"],
                 "genitive": ["a-o", "ā(h)ōn"],
                 "dative/locative": ["a-i", "ā(h)i"],
                 "instrumental": ["a-pi", "āp(h)i"]
@@ -31,11 +32,11 @@ endings = {
         },
         "2nd declension": {
             # TODO add second decl neuter
-            # TODO add allative?
             "singular": {
                 # case: [syllabograms, pronunciation]
                 "nominative": ["o", "os"],
                 "accusative": ["o", "on"],
+                "allative": ["o-de", "onde"],
                 "genitive": ["o-jo", "oio"],
                 "dative": ["o", "ōi"],
                 "locative": ["o", "oi"],
@@ -51,6 +52,7 @@ endings = {
             "plural": {
                 "nominative": ["o", "oi"],
                 "accusative": ["o", "ons"],
+                "allative": ["o-de", "o(n)sde"],
                 "genitive": ["o", "ōn"],
                 "dative/locative": ["o-i", "oi(h)i"],
                 "instrumental": ["o/o-pi", "ōis/o(i)p(h)i"]
@@ -58,11 +60,11 @@ endings = {
         },
         "3rd declension": {
             # TODO add third decl neuter
-            # TODO add allative?
             "singular": {
                 # case: [syllabograms, pronunciation]
                 "nominative": ["", ""],
                 "accusative": ["a", "a"],
+                "allative": ["a-de", "ade"],
                 "genitive": ["o", "os"],
                 "dative": ["e/i", "ei/i"],
                 "locative": ["i/e/e-u", "i/ei/ēu"],  # TODO double check this
@@ -75,6 +77,7 @@ endings = {
             "plural": {
                 "nominative": ["e", "es"],
                 "accusative": ["a", "as"],
+                "allative": ["a-de", "asde"],
                 "genitive": ["o", "ōn"],
                 # TODO which vowel to insert between gen sg stem and ending?
                 "dative/locative": ["si", "si"],
