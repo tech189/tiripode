@@ -1,9 +1,10 @@
 endings = {
     "nouns": {
+        # case: [syllabograms, pronunciation]
+        # OR [[syllabograms 1, pronunciation 1], [syllabograms 2, pronunciation 2], ...]
         "1st declension": {
             # TODO first decl masc!
             "singular": {
-                # case: [syllabograms, pronunciation]
                 "nominative": ["a", "ā̆"],
                 "accusative": ["a", "ā̆n"],
                 "allative": ["a-de", "ā̆n-de"],
@@ -22,7 +23,7 @@ endings = {
                 "dative": ["o-i", "oi(h)i(n)"],
             },
             "plural": {
-                "nominative": ["a/a3", "ai"],  # TODO check when a3 appears
+                "nominative": [["a", "ai"], ["a3", "ai"]],  # TODO check when a3 appears
                 "accusative": ["a", "āns"],
                 "allative": ["a-de", "ānsde"],
                 "genitive": ["a-o", "ā(h)ōn"],
@@ -33,7 +34,6 @@ endings = {
         "2nd declension": {
             # TODO add second decl neuter
             "singular": {
-                # case: [syllabograms, pronunciation]
                 "nominative": ["o", "os"],
                 "accusative": ["o", "on"],
                 "allative": ["o-de", "onde"],
@@ -55,19 +55,18 @@ endings = {
                 "allative": ["o-de", "o(n)sde"],
                 "genitive": ["o", "ōn"],
                 "dative/locative": ["o-i", "oi(h)i"],
-                "instrumental": ["o/o-pi", "ōis/o(i)p(h)i"]
+                "instrumental": [["o", "ōis"], ["o-pi", "o(i)p(h)i"]]
             }
         },
         "3rd declension": {
             # TODO add third decl neuter
             "singular": {
-                # case: [syllabograms, pronunciation]
                 "nominative": ["", ""],
                 "accusative": ["a", "a"],
                 "allative": ["a-de", "ade"],
                 "genitive": ["o", "os"],
-                "dative": ["e/i", "ei/i"],
-                "locative": ["i/e/e-u", "i/ei/ēu"],  # TODO double check this
+                "dative": [["e", "ei"], ["i", "i"]],
+                "locative": [["i", "i"], ["e", "ei"], ["e-u", "ēu"]],
                 "instrumental": ["e", "ē"]
             },
             "dual": {

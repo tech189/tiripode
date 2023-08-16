@@ -1,6 +1,7 @@
 import tools                # converting latin <-> linear b
 import endings              # noun, verb endings
 import log                  # set up logging
+import parse                # get parses
 
 import json                 # importing sign table
 import regex                # splitting text into words
@@ -8,6 +9,8 @@ from nltk import pos_tag, word_tokenize
 
 # get logger from main file
 logger = log.logger
+
+# TODO save and load lexicon functions
 
 def label_possible_forms():
     with open("lexicon.json", "r") as lexicon_file:
@@ -177,6 +180,54 @@ def label_short_definitions():
     
     logger.info(f"Labelled {short_defs} short definitions and left {untagged} untagged.")
 
+def generate_nominative_list():
+    with open("lexicon.json", "r") as lexicon_file:
+        lexicon_dict = json.load(lexicon_file)
+    
+    nominatives = []
+    stems = []
+    for _, word in lexicon_dict.items():
+        if word["transcription"] == 'ti-ri-po-de':
+            egg = 1
+        if word.get("category", "") == "noun" or word.get("category", "") == "adjective":
+            parses = parse.parse(word["transcription"])
+
+            print(parses["possible_stems"])
+            if '--' in parses["possible_stems"][0]:
+                egg = 1
+
+            for form in parses["possible_forms"]:
+                if "nominative" in form["case"] and "singular" in form["number"]:
+                    nominatives.append(word["transcription"])
+                    if parses["possible_stems"] not in stems:
+                        stems += parses["possible_stems"]
+    
+    with open("generated-nominatives.json", "w") as nominative_file:
+        nominative_file.write(json.dumps(nominatives, indent=2, ensure_ascii=False))
+    with open("generated-stems.json", "w") as stem_file:
+        stem_file.write(json.dumps(stems, indent=2, ensure_ascii=False))
+    
+    logger.info(f"Generated a list of {len(nominatives)} nominative singular dictionary headwords and their stems.")
+
+def generate_inflected_list():
+    with open("generated-nominatives.json", "r") as lexicon_file:
+        lexicon_dict = json.load(lexicon_file)
+    
+    inflections = []
+    for _, word in lexicon_dict.items():
+        if word.get("category", "") == "noun" or word.get("category", "") == "adjective":
+            parses = parse.parse(word["transcription"])
+
+            for form in parses["possible_forms"]:
+                if "nominative" in form["case"] and "singular" in form["number"]:
+                    inflections.append(word["transcription"])
+    
+    with open("generated-stems.json", "w") as stem_file:
+        stem_file.write(json.dumps(inflections, indent=2, ensure_ascii=False))
+    
+    logger.info(f"Generated a list of {len(inflections)} inflections from the nominative singular dictionary headwords.")
+
+
 def count_labelled():
     with open("lexicon.json", "r") as lexicon_file:
         lexicon_dict = json.load(lexicon_file)
@@ -196,8 +247,10 @@ def run():
     label_lexicon() # lexicon.json --> lexicon-(un)labelled.json
     combine_lexicons() # lexicon-(un)labelled.json --> lexicon.json
     label_short_definitions() # lexicon.json --> lexicon.json
-    label_possible_forms() # lexicon.json --> lexicon-possible-forms.json
+    # label_possible_forms() # lexicon.json --> lexicon-possible-forms.json
     count_labelled()
+    generate_nominative_list() # lexicon.json --> generated-nominatives.json
+
 
 if __name__ == "__main__":
     run()
