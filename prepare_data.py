@@ -192,9 +192,12 @@ def generate_nominative_list():
         if word.get("category", "") == "noun" or word.get("category", "") == "adjective":
             parses = parse.parse(word["transcription"])
 
-            print(parses["possible_stems"])
-            if '--' in parses["possible_stems"][0]:
+            # print(parses["possible_stems"])
+            # if '--' in parses["possible_stems"][0]:
+            #     egg = 1
+            if len(parses["possible_stems"]) == 0:
                 egg = 1
+                print(word["transcription"])
 
             for form in parses["possible_forms"]:
                 if "nominative" in form["case"] and "singular" in form["number"]:

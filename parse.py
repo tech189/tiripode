@@ -46,6 +46,9 @@ def parse(word):
     possible_forms = []
     possible_stems = []
 
+    # TODO stem should be generated from before this func
+    word = tools.numeral_syllabograms_to_sound(word)
+
     # TODO determine case e.g. by participle me-no => 2nd
     # logger.debug(f"Parsing: {word}")
     for declension, number_set in endings.endings["nouns"].items():

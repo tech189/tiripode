@@ -90,6 +90,7 @@ def linear_b_to_latin(text):
     # split text by spaces and hyphens
     with open("sign-table.json", "r") as sign_file:
         sign_dict = json.load(sign_file)
+    # \pL = Letter (any)  \pM = Mark (any)
     text = filter(None, regex.split(r"([^\p{L}\p{M}0-9_\-\*])", text))
     
     output = ""
@@ -133,3 +134,36 @@ def linear_b_to_latin(text):
         if output[-1:] == "-":
             output = output[:-1]
     return output
+
+def numeral_syllabograms_to_sound(word):
+    # prepare syllabograms with numerals
+    # from Del Freo-Perna 2019 page 133
+    sounds = {
+        "a2": "a",
+        "a3": "ai",
+        "pu2": "pu",
+        "ra2": "rra", # TODO should rrai be possible too?
+        "ro2": "rro",
+        "ra3": "rai",
+        "ta2": "sta"
+    }
+
+    syllabograms = regex.split("(-)", word)
+
+    output = ""
+
+    for syllabogram in syllabograms:
+        if syllabogram in sounds.keys():
+            output += sounds[syllabogram]
+        else:
+            output += syllabogram
+    
+    return output
+
+if __name__ == "__main__":
+    logger.info("Converting 𐀐𐀩𐀪𐀡 to Latin letters:")
+    print(linear_b_to_latin("𐀐𐀩𐀪𐀡"))
+    logger.info("Converting Po-ti-ni-a to Linear B:")
+    print(latin_to_linear_b("Po-ti-ni-a"))
+    logger.info("Converting syllabograms with numerals in them to just sounds:")
+    print(numeral_syllabograms_to_sound("a-de-ra2"))
