@@ -185,25 +185,36 @@ def generate_nominative_list():
         lexicon_dict = json.load(lexicon_file)
     
     nominatives = []
-    stems = []
+    stems = {
+        "1st declension": [],
+        "2nd declension": [],
+        "3rd declension": []
+    }
     for _, word in lexicon_dict.items():
-        if word["transcription"] == 'ti-ri-po-de':
-            egg = 1
         if word.get("category", "") == "noun" or word.get("category", "") == "adjective":
             parses = parse.parse(word["transcription"])
-
-            # print(parses["possible_stems"])
-            # if '--' in parses["possible_stems"][0]:
-            #     egg = 1
-            if len(parses["possible_stems"]) == 0:
-                egg = 1
-                print(word["transcription"])
 
             for form in parses["possible_forms"]:
                 if "nominative" in form["case"] and "singular" in form["number"]:
                     nominatives.append(word["transcription"])
-                    if parses["possible_stems"] not in stems:
-                        stems += parses["possible_stems"]
+
+                    if word["transcription"][-1] == "a" and parses["possible_stems"] not in stems["1st declension"]:
+                        stems["1st declension"] += parses["possible_stems"]
+                    elif word["transcription"][-1] == "o" and parses["possible_stems"] not in stems["2nd declension"]:
+                        stems["2nd declension"] += parses["possible_stems"]
+                    else:
+                        print(word["transcription"],parses["possible_stems"])
+                        if tools.numeral_syllabograms_to_sound(word["transcription"])[-1] == "a" and parses["possible_stems"] not in stems["1st declension"]:
+                            stems["1st declension"] += parses["possible_stems"]
+                            
+                        elif tools.numeral_syllabograms_to_sound(word["transcription"])[-1] == "o" and parses["possible_stems"] not in stems["2nd declension"]:
+                            stems["2nd declension"] += parses["possible_stems"]
+
+                    # if word["transcription"][-3] == "e-u" and parses["possible_stems"] not in stems["3rd declension"]:
+                        # stems["3rd declension"] += [word["transcription"]]#parses["possible_stems"]
+
+                    # if parses["possible_stems"] not in stems:
+                    #     stems += parses["possible_stems"]
     
     with open("generated-nominatives.json", "w") as nominative_file:
         nominative_file.write(json.dumps(nominatives, indent=2, ensure_ascii=False))
@@ -213,23 +224,85 @@ def generate_nominative_list():
     logger.info(f"Generated a list of {len(nominatives)} nominative singular dictionary headwords and their stems.")
 
 def generate_inflected_list():
-    with open("generated-nominatives.json", "r") as lexicon_file:
+    # with open("generated-stems.json", "r") as stem_file:
+    #     stems = json.load(stem_file)
+
+    # TODO label stems either 1st,2nd,3rd...
+    with open("generated-stems.json", "r") as stem_file:
+        stems = json.load(stem_file)
+    
+    first_decl = endings.endings["nouns"]["1st declension"]
+    second_decl = endings.endings["nouns"]["2nd declension"]
+    
+    counter = 0
+    inflection_dict = {}
+    for declension, words in stems.items():
+        for word in words:
+            if declension == "1st declension":
+                decl = first_decl
+            elif declension == "2nd declension":
+                decl = second_decl
+            
+            # TODO does this catch all 1st declensions?
+            inflection_dict[word] = {}
+            inflections = []
+
+            for number, ending_set in decl.items():
+                for case, ending in ending_set.items():
+                    if isinstance(ending[0], list):
+                        for end in ending:
+                            logger.debug(case + " " + word[:-1] + end[0] + "  (-" + end[1] + ")")
+                            inflections.append(
+                                {
+                                    "declension": declension,
+                                    "case": case,
+                                    "number": number,
+                                    "ending": end[0]
+                                }
+                            )
+                            # seven nested for loops because why not?
+                            # for char in end:
+                            #     print(" hi ")
+                            #     for byte in memoryview(str.encode(char)).tolist():
+                            #         print(" :) ", end='')
+                    else:
+                        logger.debug(case + " " + word[:-1] + ending[0] + "  (-" + ending[1] + ")")
+                        inflections.append(
+                            {
+                                "declension": declension,
+                                "case": case,
+                                "number": number,
+                                "ending": ending[0]
+                            }
+                        )
+                for inflection in inflections:
+                    counter += 1
+
+                    if inflection_dict[word].get(word[:-1] + inflection["ending"], "") != "":
+                        # already a list of inflections, just append
+                        inflection_dict[word][word[:-1] + inflection["ending"]].append(inflection)
+                    else:
+                        # no inflections recorded yet, begin list
+                        inflection_dict[word][word[:-1] + inflection["ending"]] = [inflection]
+    
+    # alphabetise
+    inflection_dict = dict(sorted(inflection_dict.items()))
+
+    with open("generated-inflections.json", "w") as stem_file:
+        stem_file.write(json.dumps(inflection_dict, indent=2, ensure_ascii=False))
+    
+    logger.info(f"Generated a list of {len(inflection_dict)} inflections from the nominative singular dictionary headwords. That's {counter} forms!")
+
+def alphabetise_lexicon():
+    with open("lexicon.json", "r") as lexicon_file:
         lexicon_dict = json.load(lexicon_file)
     
-    inflections = []
-    for _, word in lexicon_dict.items():
-        if word.get("category", "") == "noun" or word.get("category", "") == "adjective":
-            parses = parse.parse(word["transcription"])
+    sorted_lexicon = dict(sorted(lexicon_dict.items()))
 
-            for form in parses["possible_forms"]:
-                if "nominative" in form["case"] and "singular" in form["number"]:
-                    inflections.append(word["transcription"])
-    
-    with open("generated-stems.json", "w") as stem_file:
-        stem_file.write(json.dumps(inflections, indent=2, ensure_ascii=False))
-    
-    logger.info(f"Generated a list of {len(inflections)} inflections from the nominative singular dictionary headwords.")
-
+    with open("lexicon.json", "w") as labelled_file:
+        labelled_file.write(json.dumps(sorted_lexicon, indent=2, ensure_ascii=False))
+        
+    logger.info(f"Alphabetised the lexicon.")
 
 def count_labelled():
     with open("lexicon.json", "r") as lexicon_file:
@@ -252,7 +325,10 @@ def run():
     label_short_definitions() # lexicon.json --> lexicon.json
     # label_possible_forms() # lexicon.json --> lexicon-possible-forms.json
     count_labelled()
-    generate_nominative_list() # lexicon.json --> generated-nominatives.json
+    alphabetise_lexicon() # lexicon.json --> lexicon.json
+    generate_nominative_list() # lexicon.json --> generated-(nominatives|stems).json
+    generate_inflected_list() # lexicon.json --> generated-inflections.json
+    
 
 
 if __name__ == "__main__":
