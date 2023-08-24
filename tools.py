@@ -138,27 +138,36 @@ def linear_b_to_latin(text):
 def numeral_syllabograms_to_sound(word):
     # prepare syllabograms with numerals
     # from Del Freo-Perna 2019 page 133
+
+    # equivalents for stem creation e.g. ra2 => ra
+    # TODO generate a-de-ra2 from stem a-de-r-
     sounds = {
-        "a2": "a",
-        "a3": "ai",
-        "pu2": "pu",
-        "ra2": "rra", # TODO should rrai be possible too?
-        "ro2": "rro",
-        "ra3": "rai",
-        "ta2": "sta"
+        "a2": ["a", "a"],
+        "a3": ["ai", "a"],
+        "pu2": ["pu", "pu"],
+        "ra2": ["rra", "ra"], # TODO should rrai be possible too?
+        "ro2": ["rro", "ro"],
+        "ra3": ["rai", "ra"],
+        "ta2": ["sta", "ta"]
     }
 
     syllabograms = regex.split("(-)", word)
 
     output = ""
+    normalised = ""
 
     for syllabogram in syllabograms:
         if syllabogram in sounds.keys():
-            output += sounds[syllabogram]
+            output += sounds[syllabogram][0]
+            normalised += sounds[syllabogram][1]
         else:
             output += syllabogram
+            normalised += syllabogram
     
-    return output
+    return {
+        "sound": output,
+        "normalised": normalised
+    }
 
 if __name__ == "__main__":
     logger.info("Converting 𐀐𐀩𐀪𐀡 to Latin letters:")

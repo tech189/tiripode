@@ -62,6 +62,24 @@ def print_verb(verb):
             print(case + spacer + verb + ending[0] + "  (-" + ending[1] + ")")
         print()
 
+def print_inflections_to_csv():
+    import json
+    with open("generated-inflections.json", "r") as inflections_file:
+        inflections_dict = json.load(inflections_file)
+    with open("inflections.csv", "w") as csv_file:
+        csv_file.write("inflectionid,inflection,form,dict_entry,uncertaingender\n")
+        counter = 1
+        for stem, inflection_set in inflections_dict.items():
+            for inflection, possible_forms in inflection_set.items():
+                for form in possible_forms:
+                    gender_uncertain = False
+                    if "*" in form["gender"]:
+                        form["gender"] = form["gender"].replace("*", "")
+                        gender_uncertain = True
+                    csv_file.write(f'{counter},{inflection},0,0,{"f" if gender_uncertain == False else "t"}\n')
+                    counter +=1
+
+
 def main():
     logger.info("Printing out PY Ta 641:")
     PY_Ta_641 = '''.1a                                                                                                                                                                                                                                                                               ,  ke-re-a2  , *2̣0̣1̣VAS[
@@ -88,6 +106,8 @@ def main():
 
     # logger.info("Labelling the lexicon:")
     # prepare_data.run()
+
+    print_inflections_to_csv()
 
 if __name__ == "__main__":
     logger = log.logger

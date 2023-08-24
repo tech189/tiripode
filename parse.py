@@ -47,44 +47,47 @@ def parse(word):
     possible_stems = []
 
     # TODO stem should be generated from before this func
-    word = tools.numeral_syllabograms_to_sound(word)
+    word = tools.numeral_syllabograms_to_sound(word)["normalised"]
 
     # TODO determine case e.g. by participle me-no => 2nd
     # logger.debug(f"Parsing: {word}")
     for declension, number_set in endings.endings["nouns"].items():
-        for number, ending_set in number_set.items():
-            for case, ending_list in ending_set.items():
-                if isinstance(ending_list[0], list):
-                    for ending in ending_list:
-                        if check_ending(word, ending[0]):
-                            stem = word[:-len(ending[0])]
-                            if stem[-1] != "-":
-                                stem = stem + "-"
+        for gender, gender_set in number_set.items():
+            for number, ending_set in gender_set.items():
+                for case, ending_list in ending_set.items():
+                    if isinstance(ending_list[0], list):
+                        for ending in ending_list:
+                            if check_ending(word, ending[0]):
+                                stem = word[:-len(ending[0])]
+                                if stem[-1] != "-":
+                                    stem = stem + "-"
 
-                            if stem not in possible_stems:
-                                possible_stems.append(stem)
-                            
-                            possible_forms.append({
-                                "declension": declension,
-                                "case": case,
-                                "number": number,
-                                "ending": ending[0]
-                            })
+                                if stem not in possible_stems:
+                                    possible_stems.append(stem)
+                                
+                                possible_forms.append({
+                                    "declension": declension,
+                                    "case": case,
+                                    "gender": gender,
+                                    "number": number,
+                                    "ending": ending[0]
+                                })
 
-                elif check_ending(word, ending_list[0]):
-                    stem = word[:-len(ending_list[0])]
-                    if stem[-1] != "-":
-                        stem = stem + "-"
+                    elif check_ending(word, ending_list[0]):
+                        stem = word[:-len(ending_list[0])]
+                        if stem[-1] != "-":
+                            stem = stem + "-"
 
-                    if stem not in possible_stems:
-                        possible_stems.append(stem)
-                    
-                    possible_forms.append({
-                        "declension": declension,
-                        "case": case,
-                        "number": number,
-                        "ending": ending_list[0]
-                    })
+                        if stem not in possible_stems:
+                            possible_stems.append(stem)
+                        
+                        possible_forms.append({
+                            "declension": declension,
+                            "case": case,
+                            "gender": gender,
+                            "number": number,
+                            "ending": ending_list[0]
+                        })
  
         # for key, value in third_decl.items():
         #     for case, ending in value.items():
@@ -99,11 +102,12 @@ def parse(word):
 
 if __name__ == "__main__":
     input_word = "ti-ri-po-de"
-    # input_word = "*34-ke-te-si"
-    # input_word = "*56-i-ti"
-    input_word = '*56-ro2'
+    # # input_word = "*34-ke-te-si"
+    # # input_word = "*56-i-ti"
+    # # input_word = '*56-ro2'
+    # input_word = 'a-de-ra2'
     parses = parse(input_word)
     logger.info(f"Parsing: {input_word}")
     for form in parses["possible_forms"]:
-        logger.info(f'\t\t{form["declension"]} {form["case"]} {form["number"]} ({form["ending"]})')
+        logger.info(f'\t\t{form["declension"]} {form["case"]} {form["gender"]} {form["number"]} ({form["ending"]})')
     logger.info(f'\tStem could be {", ".join(parses["possible_stems"])}')
