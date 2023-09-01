@@ -20,7 +20,8 @@ create table if not exists form (
     formcase varchar(50) not null,
     formgender varchar(50) not null,
     formnumber varchar(50) not null,
-    formending varchar(20) not null
+    formending varchar(20) not null,
+    formpronunciation varchar(20) not null
 );
 
 create table if not exists inflection (

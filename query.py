@@ -62,7 +62,7 @@ def parse(word):
                 # )
                 # entryid = cur.fetchone()[0]
 
-                cur.execute("select dict_entry, formdeclension, formcase, formgender, formnumber, uncertaingender from inflection, form where inflection.form=form.formid and inflection = %s", (word,))
+                cur.execute("select dict_entry, formdeclension, formcase, formgender, formnumber, uncertaingender, formpronunciation from inflection, form where inflection.form=form.formid and inflection = %s", (word,))
                 output_dict = cur.fetchall()
 
                 # result_dict = {}
@@ -110,31 +110,39 @@ def lookup(entry):
             with conn.cursor() as cur:
             
                 if isinstance(entry, int):
-                    cur.execute("select word, entrydefinition from dict_entry where entryid = %s", (entry,))
+                    cur.execute("select word, entrydefinition, category, stem from dict_entry where entryid = %s", (entry,))
                     result = cur.fetchone()
                     word = result[0]
                     definition = result[1]
+                    category = result[2]
+                    stem = result[3]
                 elif isinstance(entry, str):
                     if regex.search(r'[\U00010000-\U000100FA]', entry, regex.IGNORECASE):
                         # linear b characters found
                         entry = tools.linear_b_to_latin(entry)
-                    cur.execute("select entryid, word, entrydefinition from dict_entry where word = %s", (entry,))
+                    cur.execute("select entryid, word, entrydefinition, category, stem from dict_entry where word = %s", (entry,))
                     result = cur.fetchone()
                     entry = result[0]
                     word = result[1]
                     definition = result[2]
+                    category = result[3]
+                    stem = result[4]
 
         print(
             json.dumps(
                     {
                         "entry_id": int(entry),
                         "word": word,
-                        "definition": definition
+                        "definition": definition,
+                        "category": category,
+                        "stem": stem
                     } if isinstance(entry, int) else 
                     {
                         "entry_id": entry,
                         "word": word,
-                        "definition": definition
+                        "definition": definition,
+                        "category": category,
+                        "stem": stem
                     },
                 indent=2, ensure_ascii=False
             )

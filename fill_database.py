@@ -4,6 +4,7 @@ import log             # set up logging
 
 import psycopg         # connect to database
 import json            # open nominatives, stems, etc.
+from tqdm import tqdm  # progress bar
 
 connection_dict =  psycopg.conninfo.conninfo_to_dict(secret.DB_URI)
 
@@ -29,7 +30,8 @@ def run():
                 exit()
 
             # fill table dict_entry
-            for _, word in lexicon_dict.items():
+            logger.info("Filling table dict_entry with words from lexicon...")
+            for _, word in tqdm(lexicon_dict.items()):
 
                 stems = word.get("stems", None)
                 if stems is not None:
@@ -41,7 +43,8 @@ def run():
                 )
             
             # fill table form
-            for declension, decl_set in decl.items():
+            logger.info("Filling table form with endings...")
+            for declension, decl_set in tqdm(decl.items()):
                 for gender, gender_set in decl_set.items():
                     for number, ending_set in gender_set.items():
                         for case, ending in ending_set.items():
@@ -49,18 +52,19 @@ def run():
                                 for end in ending:
                                     # logger.debug(declension, case, gender, number, end[0])
                                     cur.execute(
-                                        "INSERT INTO form (formdeclension, formcase, formgender, formnumber, formending) VALUES (%s, %s, %s, %s, %s)",
-                                        (declension, case, gender, number, end[0])
+                                        "INSERT INTO form (formdeclension, formcase, formgender, formnumber, formending, formpronunciation) VALUES (%s, %s, %s, %s, %s, %s)",
+                                        (declension, case, gender, number, end[0], end[1])
                                     )
                             else:
                                 # logger.debug(declension, case, gender, number, ending[0])
                                 cur.execute(
-                                    "INSERT INTO form (formdeclension, formcase, formgender, formnumber, formending) VALUES (%s, %s, %s, %s, %s)",
-                                    (declension, case, gender, number, ending[0])
+                                    "INSERT INTO form (formdeclension, formcase, formgender, formnumber, formending, formpronunciation) VALUES (%s, %s, %s, %s, %s, %s)",
+                                    (declension, case, gender, number, ending[0], ending[1])
                                 )
 
             # fill table inflection
-            for word, inflection_set in inflections_dict.items():
+            logger.info("Filling table inflection with generated inflections...")
+            for word, inflection_set in tqdm(inflections_dict.items()):
                 for inflection, possible_forms in inflection_set.items():
                     for form in possible_forms:
 

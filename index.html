@@ -67,11 +67,13 @@
 		function parse() {
 			let resultsArea = document.getElementById("resultsArea");
 			let loadingSpinner = document.getElementById("loadingSpinner");
+			const possibleFormsTitle = document.getElementById("possibleFormsTitle");
 			const possibleForms = document.getElementById("possibleForms");
 			const errorBox = document.getElementById("errorBox");
 			const readyText = document.getElementById("readyText");
 			const notesBox = document.getElementById("notesBox");
 			// clear div for new forms
+			possibleFormsTitle.textContent = "";
 			possibleForms.replaceChildren();
 
 			// show results area and spinner while results are being fetched
@@ -112,8 +114,10 @@
 
 								for (let i = 0; i < entries.length; i++) {
 									// console.log("loop time :)")
+									// sort and join by new lines
+									let stems = entries[i]["stem"].split(",").sort().join("<br>");
 
-									const templateCard = '<div class="card"> <div id="wordHeader" class="card-header"> Word ' + (i + 1) + ': ' + entries[i]["word"] + ' </div> <div class="card-body"> <h5 class="card-title">Definition</h5> <p id="dictionaryEntry" class="card-text">' + entries[i]["definition"] + '</p> <h5 class="card-title">Possible forms</h5> <table class="table"> <thead> <tr> <th scope="col">Declension</th> <th scope="col">Case</th> <th scope="col">Gender</th> <th scope="col">Number</th> </tr> </thead> <tbody id="resultTableBody' + i + '"> </tbody> </table> </div> </div> <br />';
+									const templateCard = '<div class="card"> <div id="wordHeader" class="card-header"> Word ' + (i + 1) + ': ' + entries[i]["word"] + ' </div> <div class="card-body"> <h5 class="card-title">Definition</h5> <p id="dictionaryEntry" class="card-text">' + entries[i]["definition"] + '</p> <h5 class="card-title">Possible stems</h5> <p>' + stems + '</p> <h5 class="card-title">Possible forms</h5> <table class="table"> <thead> <tr> <th scope="col">Declension</th> <th scope="col">Case</th> <th scope="col">Gender</th> <th scope="col">Number</th> <th scope="col">Ending</th> </tr> </thead> <tbody id="resultTableBody' + i + '"> </tbody> </table> </div> </div> <br />';
 									
 									possibleForms.insertAdjacentHTML('beforeend', templateCard);
 
@@ -152,17 +156,19 @@
 											console.log(element)
 											const resultTableBody = document.getElementById("resultTableBody" + i);
 
+											// span declension across rows, remove redundant "declension" text
 											let rowspanElement = "";
 											if (formCounter === 0) {
-												rowspanElement = '<td rowspan="' + declensionLengths[element[1]] + '">' + element[1] + '</td>';
+												rowspanElement = '<td rowspan="' + declensionLengths[element[1]] + '">' + element[1].split(" ")[0] + '</td>';
 											}
 
+											// mark unlikely genders
 											let unlikelyGender = "";
 											if (element[5] === true) {
 												unlikelyGender = "†"
 											}
 
-											const templateRow = '<tr>' + rowspanElement + '<td>' + element[2] + '</td><td>' + element[3] + unlikelyGender + '</td><td>' + element[4] + '</td></tr>';
+											const templateRow = '<tr>' + rowspanElement + '<td>' + element[2] + '</td><td>' + element[3] + unlikelyGender + '</td><td>' + element[4] + '</td><td>/-' + element[6] + '/</td></tr>';
 											console.log(templateRow);
 
 											resultTableBody.insertAdjacentHTML('beforeend', templateRow);
@@ -182,6 +188,7 @@
 								}
 								else {
 									notesBox.style.display = "";
+									possibleFormsTitle.textContent = word + " could be from:";
 								}
 							}
 						)
@@ -290,7 +297,7 @@
 	<div id="resultsArea" class="justify-content-center mb-5 row" style="display: none;">
 		<div class="col-lg-9">
 
-			<h4>Possible forms:</h4>
+			<h4 id="possibleFormsTitle">Possible forms:</h4>
 			<br />
 			<div id="loadingSpinner" class="d-flex justify-content-center">
 				<div class="spinner-border m-5" role="status">
