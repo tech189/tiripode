@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tiripode - Tables</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<style>
+		.form-control-dark {
+			border-color: var(--bs-gray);
+		}
+
+		.form-control-dark:focus {
+			border-color: #fff;
+			box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+		}
+
+		.text-small {
+			font-size: 85%;
+		}
+
+		.dropdown-toggle:not(:focus) {
+			outline: 0;
+		}
+	</style>
+	<script>
+		// Set theme to the user's preferred color scheme
+		function updateTheme() {
+			const colorMode = window.matchMedia("(prefers-color-scheme: dark)").matches ?
+				"dark" :
+				"light";
+			document.querySelector("html").setAttribute("data-bs-theme", colorMode);
+		}
+
+		// Set theme on load
+		updateTheme()
+
+		// Update theme when the preferred scheme changes
+		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme)
+
+	</script>
+</head>
+
+<body>
+	<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+
+	</svg>
+	<div class="container">
+		<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+			<a href="./"
+				class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+				<svg class="bi me-2" width="40" height="32">
+					<use xlink:href="#bootstrap"></use>
+				</svg>
+				<span class="fs-4">Tiripode</span>
+			</a>
+
+			<ul class="nav nav-pills">
+				<li class="nav-item"><a href="./" class="nav-link">Parse</a></li>
+				<li class="nav-item"><a href="./dictionary.html" class="nav-link">Dictionary</a></li>
+				<li class="nav-item"><a href="./tables.html" class="nav-link active" aria-current="page">Tables</a></li>
+				<li class="nav-item"><a href="./gloss.html" class="nav-link">Gloss</a></li>
+				<li class="nav-item"><a href="./about.html" class="nav-link">About</a></li>
+			</ul>
+		</header>
+	</div>
+	<br />
+
+	<div class="justify-content-center mb-5 row">
+		<div class="col-lg-9">
+			<h4>Tables</h4>
+			<p>To be built...</p>
+		</div>
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+		integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

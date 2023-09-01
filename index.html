@@ -4,10 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Tiripode</title>
+	<title>Tiripode - Parse</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 	<style>
+		/* TODO move to styles.css */
 		.form-control-dark {
 			border-color: var(--bs-gray);
 		}
@@ -26,6 +27,8 @@
 		}
 	</style>
 	<script>
+		// TODO move theming to theme.js
+
 		// Set theme to the user's preferred color scheme
 		function updateTheme() {
 			const colorMode = window.matchMedia("(prefers-color-scheme: dark)").matches ?
@@ -65,6 +68,9 @@
 			let resultsArea = document.getElementById("resultsArea");
 			let loadingSpinner = document.getElementById("loadingSpinner");
 			const possibleForms = document.getElementById("possibleForms");
+			const errorBox = document.getElementById("errorBox");
+			const readyText = document.getElementById("readyText");
+			const notesBox = document.getElementById("notesBox");
 			// clear div for new forms
 			possibleForms.replaceChildren();
 
@@ -72,90 +78,133 @@
 			resultsArea.style.display = "";
 			loadingSpinner.style.display = "";
 			loadingSpinner.classList.add("d-flex");
+			errorBox.style.display = "none";
+			readyText.style.display = "none";
+			notesBox.style.display = "none";
 
-			const word = document.getElementById("wordBox").value;
+			let word = document.getElementById("wordBox").value
+			if (word === "") {
+				word = "please help am not good with computer"
+				// errorBox.style.display = "";
+				// errorBox.textContent = "Please why  did  you put that in the box smh";
+			}
+			word = word.trim().replace(/\s+/g, " ").replaceAll(" ", "-").toLowerCase();
 			let dict_ids = [];
 
-			fetchParse(word).then(
-				(parsings) => {
-					// get a list of dict_ids - the words the results could be from
-					for (let i = 0; i < parsings.length; i++) {
-						if (!dict_ids.includes(parsings[i][0])) {
-							dict_ids.push(parsings[i][0])
+			try {
+				fetchParse(word).then(
+					(parsings) => {
+						if ("error" in parsings && errorBox.value !== "Error!") {
+							errorBox.style.display = "";
+							errorBox.textContent = parsings["error"];
 						}
-					}
 
-					fetchDict(dict_ids).then(
-						(entries) => {
-
-
-							for (let i = 0; i < entries.length; i++) {
-								// console.log("loop time :)")
-
-								const templateCard = '<div class="card"> <div id="wordHeader" class="card-header"> Word ' + (i + 1) + ': ' + entries[i]["word"] + ' </div> <div class="card-body"> <h5 class="card-title">Definition</h5> <p id="dictionaryEntry" class="card-text">' + entries[i]["definition"] + '</p> <h5 class="card-title">Possible forms</h5> <table class="table"> <thead> <tr> <th scope="col">Declension</th> <th scope="col">Case</th> <th scope="col">Gender</th> <th scope="col">Number</th> </tr> </thead> <tbody id="resultTableBody' + i + '"> </tbody> </table> </div> </div> <br />';
-								
-								possibleForms.insertAdjacentHTML('beforeend', templateCard);
-
-								// loop where parsings entry id = dict_id
-								let declensionLengths = {};
-								parsings.forEach(element => {
-									if (element[1] in declensionLengths) {
-										declensionLengths[element[1]] += 1;
-									}
-									else {
-										declensionLengths[element[1]] = 1;
-									}
-								});
-
-								console.log(declensionLengths)
-
-								let formCounter = 0;
-								let previousEntry = 0;
-								for (let j = 0; j < parsings.length; j++) {
-									const element = parsings[j];
-
-									if (entries[i]["entry_id"] !== previousEntry) {
-										formCounter = 0;
-									}
-
-									// debug
-									// console.log(formCounter)
-									// console.log("element0")
-									// console.log(element[0])
-									// console.log(typeof(element[0]))
-									// console.log("parsings i")
-									// console.log(entries[i]["entry_id"])
-									// console.log(typeof(entries[i]["entry_id"]))
-
-									if (element[0] === entries[i]["entry_id"]) {
-										console.log(element)
-										const resultTableBody = document.getElementById("resultTableBody" + i);
-
-										let rowspanElement = ""
-										if (formCounter === 0) {
-											rowspanElement = '<td rowspan="' + declensionLengths[element[1]] + '">' + element[1] + '</td>';
-										}
-
-										const templateRow = '<tr>' + rowspanElement + '<td>' + element[2] + '</td><td>' + element[3] + '</td><td>' + element[4] + '</td></tr>';
-										console.log(templateRow);
-
-										resultTableBody.insertAdjacentHTML('beforeend', templateRow);
-
-										previousEntry = entries[i]["entry_id"];
-										formCounter += 1;
-									}
-								}
-
-								// hide spinner after results fetched
-								loadingSpinner.style.display = "none";
-								loadingSpinner.classList.remove("d-flex");
-
+						// get a list of dict_ids - the words the results could be from
+						for (let i = 0; i < parsings.length; i++) {
+							if (!dict_ids.includes(parsings[i][0])) {
+								dict_ids.push(parsings[i][0])
 							}
 						}
-					)
-				}
-			);
+
+						fetchDict(dict_ids).then(
+							(entries) => {
+
+
+								for (let i = 0; i < entries.length; i++) {
+									// console.log("loop time :)")
+
+									const templateCard = '<div class="card"> <div id="wordHeader" class="card-header"> Word ' + (i + 1) + ': ' + entries[i]["word"] + ' </div> <div class="card-body"> <h5 class="card-title">Definition</h5> <p id="dictionaryEntry" class="card-text">' + entries[i]["definition"] + '</p> <h5 class="card-title">Possible forms</h5> <table class="table"> <thead> <tr> <th scope="col">Declension</th> <th scope="col">Case</th> <th scope="col">Gender</th> <th scope="col">Number</th> </tr> </thead> <tbody id="resultTableBody' + i + '"> </tbody> </table> </div> </div> <br />';
+									
+									possibleForms.insertAdjacentHTML('beforeend', templateCard);
+
+									// loop where parsings entry id = dict_id
+									let declensionLengths = {};
+									parsings.forEach(element => {
+										if (element[1] in declensionLengths) {
+											declensionLengths[element[1]] += 1;
+										}
+										else {
+											declensionLengths[element[1]] = 1;
+										}
+									});
+
+									console.log(declensionLengths)
+
+									let formCounter = 0;
+									let previousEntry = 0;
+									for (let j = 0; j < parsings.length; j++) {
+										const element = parsings[j];
+
+										if (entries[i]["entry_id"] !== previousEntry) {
+											formCounter = 0;
+										}
+
+										// debug
+										// console.log(formCounter)
+										// console.log("element0")
+										// console.log(element[0])
+										// console.log(typeof(element[0]))
+										// console.log("parsings i")
+										// console.log(entries[i]["entry_id"])
+										// console.log(typeof(entries[i]["entry_id"]))
+
+										if (element[0] === entries[i]["entry_id"]) {
+											console.log(element)
+											const resultTableBody = document.getElementById("resultTableBody" + i);
+
+											let rowspanElement = "";
+											if (formCounter === 0) {
+												rowspanElement = '<td rowspan="' + declensionLengths[element[1]] + '">' + element[1] + '</td>';
+											}
+
+											let unlikelyGender = "";
+											if (element[5] === true) {
+												unlikelyGender = "†"
+											}
+
+											const templateRow = '<tr>' + rowspanElement + '<td>' + element[2] + '</td><td>' + element[3] + unlikelyGender + '</td><td>' + element[4] + '</td></tr>';
+											console.log(templateRow);
+
+											resultTableBody.insertAdjacentHTML('beforeend', templateRow);
+
+											previousEntry = entries[i]["entry_id"];
+											formCounter += 1;
+										}
+									}
+
+									// // hide spinner after results fetched
+									// loadingSpinner.style.display = "none";
+									// loadingSpinner.classList.remove("d-flex");
+
+								}
+								if ("error" in parsings) {
+									notesBox.style.display = "none";
+								}
+								else {
+									notesBox.style.display = "";
+								}
+							}
+						)
+						.catch(error => {
+							console.log("hello");
+							console.log(error);
+							resultsArea.style.display = "none";
+						})
+						.finally(() => {
+							// console.log("helllllooooo")
+							// hide spinner after results fetched
+							loadingSpinner.style.display = "none";
+							loadingSpinner.classList.remove("d-flex");
+						})
+					}
+				);
 		}
+		catch {
+			// hide spinner if error found
+			loadingSpinner.style.display = "none";
+			loadingSpinner.classList.remove("d-flex");
+		}
+	}
 
 
 
@@ -170,8 +219,16 @@
 			.then(response => response.json())
 			.then(data => {
 				document.getElementById("readyText").innerText = "Ready to look up from a database of " + data["inflection_count"] + " inflections";
-			});
+		});
 
+		document.addEventListener("DOMContentLoaded", e => {
+			const form = document.getElementById("wordForm");
+			form.addEventListener("submit", (event) => {
+				event.preventDefault();
+				parse();
+			});
+		});
+		
 
 	</script>
 </head>
@@ -182,7 +239,7 @@
 	</svg>
 	<div class="container">
 		<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-			<a href="/"
+			<a href="./"
 				class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
 				<svg class="bi me-2" width="40" height="32">
 					<use xlink:href="#bootstrap"></use>
@@ -191,20 +248,27 @@
 			</a>
 
 			<ul class="nav nav-pills">
-				<li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Parse</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">Dictionary</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">Tables</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">Gloss</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">About</a></li>
+				<li class="nav-item"><a href="./" class="nav-link active" aria-current="page">Parse</a></li>
+				<li class="nav-item"><a href="./dictionary.html" class="nav-link">Dictionary</a></li>
+				<li class="nav-item"><a href="./tables.html" class="nav-link">Tables</a></li>
+				<li class="nav-item"><a href="./gloss.html" class="nav-link">Gloss</a></li>
+				<li class="nav-item"><a href="./about.html" class="nav-link">About</a></li>
 			</ul>
 		</header>
 	</div>
 	<br />
 
 	<div class="justify-content-center mb-5 row">
+		<div class="col-lg-9">
+			<h4><span style="font-family: serif;">Χαῖρε!</span> 👋 Please enter a Mycenaean Greek word* to get it parsed:</h4>
+			<p>*only some 1st/2nd declension nouns and adjectives parsable. <a href="./about.html">More info...</a></p>
+		</div>
+	</div>
+
+	<div class="justify-content-center mb-5 row">
 		<div class="col-lg-6">
-			<form class="">
-				<div class="input-group"><input placeholder="Enter a word in Linear B" spellcheck="false" type="text"
+			<form class="" id="wordForm">
+				<div class="input-group"><input placeholder="e.g. wo-ko or 𐀺𐀒" spellcheck="false" type="text"
 						class="form-control form-control-lg" value="" id="wordBox"><button
 						class="btn btn-primary d-inline-flex align-items-center" type="button" onclick="parse()">
 						Parse!
@@ -223,8 +287,6 @@
 		</div>
 	</div>
 
-	<br />
-
 	<div id="resultsArea" class="justify-content-center mb-5 row" style="display: none;">
 		<div class="col-lg-9">
 
@@ -235,69 +297,15 @@
 					<span class="visually-hidden">Loading...</span>
 				</div>
 			</div>
+			<div id="errorBox" class="alert alert-danger" role="alert" style="display: none;">
+				Error!
+			</div>
 			<div id="possibleForms">
 			</div>
-			<!-- <br />
-		<div class="card">
-			<div class="card-header">
-			  Word 1 - ti-ri-po-de
+			<div id="notesBox">
+				<h6>Notes</h6>
+				<p>† These forms are possible but most words in this declension are not this gender.</p>
 			</div>
-			<div class="card-body">
-			  <h5 class="card-title">Definition</h5>
-			  <p class="card-text">Wiktionary: tripod Chadwick & Ventris 1973: tripod cf. τρίπους Chadwick & Ventris 1973: nominative dual of ti-ri-po Woodard 1997: The tri cluster is represented by ti-ri because the ti takes on the vowel of ri via the progressive spelling strategy. Chadwick John and Michael Ventris 1973 Documents in Mycenaean Greek Woodard Roger D. 1997 Greek Writing from Knossos to Homer: A Linguistic Interpretation of the Greek Alphabet and the Continuity of Ancient Greek Literacy</p>
-			  <h5 class="card-title">Possible forms</h5>
-			  <table class="table" id="resultTable">
-				<thead>
-				  <tr>
-					<th scope="col">Declension</th>
-					<th scope="col">Case</th>
-					<th scope="col">Gender</th>
-					<th scope="col">Number</th>
-				  </tr>
-				</thead>
-				<tbody>
-				  <tr>
-					<td rowspan="2">2nd</td>
-					<td>allative</td>
-					<td>masculine</td>
-					<td>singular</td>
-				  </tr>
-				  <tr>
-					<td>allative</td>
-					<td>masculine</td>
-					<td>plural</td>
-				  </tr>
-				  <tr>
-					<td rowspan="5">3rd</td>
-					<td>locative</td>
-					<td>masculine/feminine</td>
-					<td>singular</td>
-				  </tr>
-				  <tr>
-					<td>instrumental</td>
-					<td>masculine/feminine</td>
-					<td>singular</td>
-				  </tr>
-				  <tr>
-					<td>nominative</td>
-					<td>masculine/feminine</td>
-					<td>dual</td>
-				  </tr>
-				  <tr>
-					<td>accusative</td>
-					<td>masculine/feminine</td>
-					<td>dual</td>
-				  </tr>
-				  <tr>
-					<td>nominative</td>
-					<td>masculine/feminine</td>
-					<td>plural</td>
-				  </tr>
-				</tbody>
-			  </table>
-			</div>
-		  </div>
-	   -->
 
 		</div>
 	</div>

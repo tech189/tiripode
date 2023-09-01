@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tiripode - About</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<style>
+		.form-control-dark {
+			border-color: var(--bs-gray);
+		}
+
+		.form-control-dark:focus {
+			border-color: #fff;
+			box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+		}
+
+		.text-small {
+			font-size: 85%;
+		}
+
+		.dropdown-toggle:not(:focus) {
+			outline: 0;
+		}
+	</style>
+	<script>
+		// Set theme to the user's preferred color scheme
+		function updateTheme() {
+			const colorMode = window.matchMedia("(prefers-color-scheme: dark)").matches ?
+				"dark" :
+				"light";
+			document.querySelector("html").setAttribute("data-bs-theme", colorMode);
+		}
+
+		// Set theme on load
+		updateTheme()
+
+		// Update theme when the preferred scheme changes
+		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme)
+
+		fetch("https://tech189.dev/tiripode/generated-nominatives.json")
+			.then(response => response.json())
+			.then(data => {
+				const accordionContent = document.getElementById("accordionContent");
+				const accordionButton = document.getElementById("accordionButton");
+				let words = "";
+				for (i = 0; i < data.length; i++) {
+					words = data.join("\n")
+				}
+				accordionContent.innerText = words;
+				accordionButton.innerText += " (" + data.length + " words)"
+			});
+
+	</script>
+</head>
+
+<body>
+	<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+
+	</svg>
+	<div class="container">
+		<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+			<a href="./"
+				class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+				<svg class="bi me-2" width="40" height="32">
+					<use xlink:href="#bootstrap"></use>
+				</svg>
+				<span class="fs-4">Tiripode</span>
+			</a>
+
+			<ul class="nav nav-pills">
+				<li class="nav-item"><a href="./" class="nav-link">Parse</a></li>
+				<li class="nav-item"><a href="./dictionary.html" class="nav-link">Dictionary</a></li>
+				<li class="nav-item"><a href="./tables.html" class="nav-link">Tables</a></li>
+				<li class="nav-item"><a href="./gloss.html" class="nav-link">Gloss</a></li>
+				<li class="nav-item"><a href="./about.html" class="nav-link active" aria-current="page">About</a></li>
+			</ul>
+		</header>
+	</div>
+	<br />
+
+	<div class="justify-content-center mb-5 row">
+		<div class="col-lg-9">
+			<h4>About Tiripode</h4>
+			<p>This website has a set of tools built for those studying <a
+					href="https://en.wikipedia.org/wiki/Mycenaean_Greek">Mycenaean Greek / Linear B</a>. I built these
+				partly because I wanted something similar to exist while I was studying the language myself. It was
+				built as part of my Computer Science MSc final project.</p>
+			<br>
+			<h5>Parsable words</h5>
+			<p>About 70% of the full lexicon is parsable. These were generated based on the assumption that the lexicon contains mostly nominative headwords — they may not be correct, so please use with caution (e.g. a 3rd declension ending -a may have been interpreted as a 1st declension nominative and added to the list). The oblique cases are parsable but are not included in the list below.</p>
+			<div class="accordion" id="accordionExample">
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button id="accordionButton" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+							data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+							Open for a full list of parsable nominatives
+						</button>
+					</h2>
+					<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+						<div id="accordionContent" class="accordion-body">
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<br />
+			<h5>Name</h5>
+			<p>To be filled...</p>
+			<h5>Author</h5>
+			<p>To be filled...</p>
+			<h5>Acknowledgements</h5>
+			<p>To be filled...</p>
+		</div>
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+		integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
