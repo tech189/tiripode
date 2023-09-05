@@ -1,4 +1,5 @@
 <?php
+// $_GET is the array of the GET request received from the client
 if($_GET["mode"] == "size") {
     try {
         $size = shell_exec("/var/www/html/tiripode/venv/bin/python /var/www/html/tiripode/query.py --" . $_GET['mode'] . " 2>&1");

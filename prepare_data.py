@@ -11,8 +11,11 @@ from nltk import pos_tag, word_tokenize
 logger = log.logger
 
 # TODO save and load lexicon functions
+# TODO add function to clean up definitions (all on one line...)
 
 def label_possible_forms():
+    # parse each word in the lexicon
+
     with open("lexicon.json", "r") as lexicon_file:
         lexicon_dict = json.load(lexicon_file)
     
@@ -71,6 +74,9 @@ def label_possible_forms():
     logger.info(f"Labelled {counter} words with {forms} possible forms.")
         
 def label_lexicon():
+    # guess category of each word based on their definition
+    # TODO improve this
+
     with open("lexicon.json", "r") as lexicon_file:
         lexicon_dict = json.load(lexicon_file)
     
@@ -124,6 +130,8 @@ def fix_lexicon_transcriptions():
     logger.info(f"Fixed {counter} transcription errors.")
 
 def combine_lexicons():
+    # add terms with categories to those without
+
     with open("lexicon-labelled.json", "r")  as labelled_file, open("lexicon-unlabelled.json", "r") as unlabelled_file:
         labelled_dict = json.load(labelled_file)
         unlabelled_dict = json.load(unlabelled_file)
@@ -136,6 +144,8 @@ def combine_lexicons():
     logger.info(f"Combined the labelled and unlabelled lexicons.")
 
 def label_short_definitions():
+    # use nltk to determine the part of speech of single word definitions
+
     with open("lexicon.json", "r") as lexicon_file:
         lexicon_dict = json.load(lexicon_file)
     
@@ -180,7 +190,10 @@ def label_short_definitions():
     
     logger.info(f"Labelled {short_defs} short definitions and left {untagged} untagged.")
 
-def generate_nominative_list():
+def generate_nominative_and_stem_list():
+    # based on category of the word and the ending pick up nominatives
+    # then, based on the ending of the nominative determine declension and separate into lists of stems
+
     with open("lexicon.json", "r") as lexicon_file:
         lexicon_dict = json.load(lexicon_file)
     
@@ -188,13 +201,14 @@ def generate_nominative_list():
     stems = {
         "1st declension": [],
         "2nd declension": []
-        # "3rd declension": []
+        # "3rd declension": [] # not supported for now
     }
     for _, word in lexicon_dict.items():
         if word.get("category", "") == "noun" or word.get("category", "") == "adjective":
             parses = parse.parse(word["transcription"])
 
             for form in parses["possible_forms"]:
+                # TODO try: and "genitive" not in form["case"] to stop -o-jo being picked up as nominative
                 if "nominative" in form["case"] and "singular" in form["number"] and word["transcription"] not in nominatives:
                     nominatives.append(word["transcription"])
 
@@ -232,28 +246,23 @@ def generate_nominative_list():
     logger.info(f"Generated a list of {len(nominatives)} nominative singular dictionary headwords and their stems.")
 
 def generate_inflected_list():
-    # with open("generated-stems.json", "r") as stem_file:
-    #     stems = json.load(stem_file)
+    # create a list of inflected forms from the list of stems and adding endings for the right declension
 
-    # TODO label stems either 1st,2nd,3rd...
     with open("generated-stems.json", "r") as stem_file:
         stems_dict = json.load(stem_file)
     
     first_decl = endings.endings["nouns"]["1st declension"]
     second_decl = endings.endings["nouns"]["2nd declension"]
     
+    # loop through declensions > list of stems > set of stems
     counter = 0
     inflection_dict = {}
     for declension, stem_set in stems_dict.items():
-        print(f"declension {declension} stem_set {stem_set[0:3]}")
+        logger.debug(f"declension {declension} stem_set {stem_set[0:3]}")
         for stem_list in stem_set:
-            print(f"stem_list {stem_list} type {type(stem_list)} should be list")
+            logger.debug(f"stem_list {stem_list} type {type(stem_list)} should be list")
             for stem in stem_list[0]:
-                print(f"stem {stem} type {type(stem)} should be str")
-                # for stem in stems:
-                #     print(f"stem {stem} type {type(stem)} should be str\n")
-                if stem == '*47-d-':
-                    egg = 1
+                logger.debug(f"stem {stem} type {type(stem)} should be str")
                 # most 1st declensions are feminine, most 2nd declensions are masculine
                 if declension == "1st declension":
                     decl = first_decl
@@ -266,6 +275,7 @@ def generate_inflected_list():
                 inflection_dict[stem_list[1]] = {}
                 inflections = []
 
+                # loop through declensions > genders > ending sets > endings
                 for gender, gender_set in decl.items():
                     for number, ending_set in gender_set.items():
                         for case, ending in ending_set.items():
@@ -306,6 +316,7 @@ def generate_inflected_list():
                                     }
                                 )
                 
+                # add what was generated to a dictionary
                 for inflection in inflections:
                     counter += 1
 
@@ -327,6 +338,8 @@ def generate_inflected_list():
     logger.info(f"Generated a list of {len(inflection_dict)} inflections from the nominative singular dictionary headwords. That's {counter} forms!")
 
 def alphabetise_lexicon():
+    # lexicon is not alphabetically ordered so needs reordering
+
     with open("lexicon.json", "r") as lexicon_file:
         lexicon_dict = json.load(lexicon_file)
     
@@ -338,6 +351,8 @@ def alphabetise_lexicon():
     logger.info(f"Alphabetised the lexicon.")
 
 def count_labelled():
+    # print out what has been categorised
+
     with open("lexicon.json", "r") as lexicon_file:
         lexicon_dict = json.load(lexicon_file)
     
@@ -356,13 +371,15 @@ def run():
     label_lexicon() # lexicon.json --> lexicon-(un)labelled.json
     combine_lexicons() # lexicon-(un)labelled.json --> lexicon.json
     label_short_definitions() # lexicon.json --> lexicon.json
+    
+    # don't need as it just labels words in the lexicon
     # label_possible_forms() # lexicon.json --> lexicon-possible-forms.json
+    
     count_labelled()
     alphabetise_lexicon() # lexicon.json --> lexicon.json
-    generate_nominative_list() # lexicon.json --> generated-(nominatives|stems).json
+    generate_nominative_and_stem_list() # lexicon.json --> generated-(nominatives|stems).json & lexicon.json
     generate_inflected_list() # lexicon.json --> generated-inflections.json
     
-
 
 if __name__ == "__main__":
     run()

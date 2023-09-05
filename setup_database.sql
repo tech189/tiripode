@@ -1,6 +1,7 @@
 create database "tiripode";
 \c tiripode;
 
+-- remove tables if database already created
 drop table if exists inflection;
 drop table if exists form;
 drop table if exists dict_entry;

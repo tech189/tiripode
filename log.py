@@ -1,3 +1,4 @@
+# this file sets the logging settings across all parts of the program
 import logging
 
 logger = logging.getLogger()

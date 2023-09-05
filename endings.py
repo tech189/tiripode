@@ -23,7 +23,7 @@ endings = {
                     "dative": ["o-i", "oi(h)i(n)"],
                 },
                 "plural": {
-                    "nominative": [["a", "ai"], ["a3", "ai"]],  # TODO check when a3 appears
+                    "nominative": [["a", "ai"], ["a3", "ai"]],
                     "accusative": ["a", "āns"],
                     "allative": ["a-de", "ānsde"],
                     "genitive": ["a-o", "ā(h)ōn"],

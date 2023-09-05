@@ -17,6 +17,7 @@ def run():
         inflections_dict = json.load(inflections_file)
 
     decl = endings.endings["nouns"]
+    # remove 3rd declension as not supported yet
     decl.pop("3rd declension")
 
     with psycopg.connect(**connection_dict) as conn:
@@ -33,6 +34,7 @@ def run():
             logger.info("Filling table dict_entry with words from lexicon...")
             for _, word in tqdm(lexicon_dict.items()):
 
+                # put all on one line if a list of possible stems
                 stems = word.get("stems", None)
                 if stems is not None:
                     stems = ",".join(stems)
@@ -68,18 +70,17 @@ def run():
                 for inflection, possible_forms in inflection_set.items():
                     for form in possible_forms:
 
+                        # convert from neuter* --> neuter, true
                         gender_uncertain = False
-
                         if "*" in form["gender"]:
                             form["gender"] = form["gender"].replace("*", "")
                             gender_uncertain = True
 
-
+                        # get formid by matching inflection's form to form table
                         cur.execute(
                             "select formid from form where formdeclension = %s and formcase = %s and formgender = %s and formnumber = %s and formending = %s",
                             (form["declension"], form["case"], form["gender"], form["number"], form["ending"])
                         )
-
                         formid = cur.fetchone()[0]
                         
                         # # debug:
@@ -90,12 +91,11 @@ def run():
                         # if formid == None:
                         #     print((form["declension"], form["case"], form["gender"], form["number"], form["ending"]))
 
-
+                        # get entryid by matching inflection's root form to dict_entry table
                         cur.execute(
                             "select entryid from dict_entry where word = %s::text",
                             (word,)
                         )
-
                         entryid = cur.fetchone()[0]
 
                         # # debug
@@ -106,19 +106,11 @@ def run():
                         # if entryid == None:
                         #     print(inflection)
 
+                        # finally insert into table
                         cur.execute(
                             "INSERT INTO inflection (inflection, form, dict_entry, uncertaingender) VALUES (%s, %s, %s, %s)",
                             (inflection, formid, entryid, gender_uncertain)
                         )
-
-            # cur.execute("select stem from dict_entry where entryid < 50 and stem is not null")
-            # logger.debug(cur.fetchall())
-            
-            # cur.execute("select formid from form where formdeclension = '2nd declension' and formcase = 'instrumental' and formgender = 'masculine' and formnumber = 'plural' and formending = 'o-pi'")
-            # logger.debug(cur.fetchone()[0])
-
-            # TODO do a join with form to check an inflection
-            # select * from inflection where inflectionid = 1 join with form via formid????
 
             cur.execute("select count(*) from dict_entry")
             dict_entry_count = cur.fetchone()[0]
@@ -128,7 +120,6 @@ def run():
 
             cur.execute("select count(*) from inflection")
             inflection_count = cur.fetchone()[0]
-
 
             # TODO is this last line necessary?
             conn.commit()

@@ -50,6 +50,7 @@
 			// console.log("in fetch dict")
 			const responseTemplate = "https://tech189.dev/tiripode/api.php?mode=lookup&word=";
 
+			// make a list of promises for each entry to look up
 			const promises = idList.map(async i => {
 				const fetchData = await fetch(responseTemplate.concat(i));
 				return fetchData.json();
@@ -58,6 +59,8 @@
 			// debug
 			// console.log(promises)
 			// console.log(Promise.all(promises))
+
+			// fetch all the entries at once, wait for all to finish before moving on
 			const responses = await Promise.all(promises);
 
 			return responses;
@@ -117,11 +120,17 @@
 									// sort and join by new lines
 									let stems = entries[i]["stem"].split(",").sort().join("<br>");
 
-									const templateCard = '<div class="card"> <div id="wordHeader" class="card-header"> Word ' + (i + 1) + ': ' + entries[i]["word"] + ' </div> <div class="card-body"> <h5 class="card-title">Definition</h5> <p id="dictionaryEntry" class="card-text">' + entries[i]["definition"] + '</p> <h5 class="card-title">Possible stems</h5> <p>' + stems + '</p> <h5 class="card-title">Possible forms</h5> <table class="table"> <thead> <tr> <th scope="col">Declension</th> <th scope="col">Case</th> <th scope="col">Gender</th> <th scope="col">Number</th> <th scope="col">Ending</th> </tr> </thead> <tbody id="resultTableBody' + i + '"> </tbody> </table> </div> </div> <br />';
+									// add counter if more than 1 result
+									let cardHeader = entries[i]["word"] + " (" + entries[i]["category"] + ")";
+									if (entries.length > 1) {
+										cardHeader = "Word " + (i + 1) + ': ' + cardHeader;
+									}
+
+									const templateCard = '<div class="card"> <div id="wordHeader" class="card-header"> ' + cardHeader + ' </div> <div class="card-body"> <h5 class="card-title">Definition</h5> <p id="dictionaryEntry" class="card-text">' + entries[i]["definition"] + '</p> <h5 class="card-title">Possible stems</h5> <p>' + stems + '</p> <h5 class="card-title">Possible forms</h5> <table class="table"> <thead> <tr> <th scope="col">Declension</th> <th scope="col">Case</th> <th scope="col">Gender</th> <th scope="col">Number</th> <th scope="col">Ending</th> </tr> </thead> <tbody id="resultTableBody' + i + '"> </tbody> </table> </div> </div> <br />';
 									
 									possibleForms.insertAdjacentHTML('beforeend', templateCard);
 
-									// loop where parsings entry id = dict_id
+									// work out how many rows needed for one declension rowspan
 									let declensionLengths = {};
 									parsings.forEach(element => {
 										if (element[1] in declensionLengths) {
@@ -134,11 +143,14 @@
 
 									console.log(declensionLengths)
 
+									// put the rows of forms into each entry table, counter keeps track of how many added so far
 									let formCounter = 0;
 									let previousEntry = 0;
 									for (let j = 0; j < parsings.length; j++) {
+										// element is current form
 										const element = parsings[j];
 
+										// new entry_id so new entry, move to next table, reset counter
 										if (entries[i]["entry_id"] !== previousEntry) {
 											formCounter = 0;
 										}
@@ -152,6 +164,7 @@
 										// console.log(entries[i]["entry_id"])
 										// console.log(typeof(entries[i]["entry_id"]))
 
+										// element[0] contains id - so if we're looking at the same entry as current form belongs to
 										if (element[0] === entries[i]["entry_id"]) {
 											console.log(element)
 											const resultTableBody = document.getElementById("resultTableBody" + i);
@@ -228,6 +241,7 @@
 				document.getElementById("readyText").innerText = "Ready to look up from a database of " + data["inflection_count"] + " inflections";
 		});
 
+		// stop pressing enter refreshing the page, bind instead to parse button
 		document.addEventListener("DOMContentLoaded", e => {
 			const form = document.getElementById("wordForm");
 			form.addEventListener("submit", (event) => {

@@ -3,9 +3,9 @@ import prepare_data
 import endings              # noun, verb endings
 import log                  # set up logging
 
-# TODO move endings into json
+# TODO move endings into json once confirmed correct
 
-
+# TODO rewrite these print declensions for frontend
 def print_first_decl_noun(noun):
 
     endings_dict = endings.endings["nouns"]["1st declension"]
@@ -107,7 +107,7 @@ def main():
     # logger.info("Labelling the lexicon:")
     # prepare_data.run()
 
-    print_inflections_to_csv()
+    # print_inflections_to_csv()
 
 if __name__ == "__main__":
     logger = log.logger

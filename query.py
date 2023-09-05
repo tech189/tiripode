@@ -7,6 +7,7 @@ import json            # return data as json
 import argparse        # cli argument parsing
 import regex           # check for linear b text
 
+# get postgres connection parameters from secret file
 connection_dict =  psycopg.conninfo.conninfo_to_dict(secret.DB_URI)
 
 # get logger from main file
@@ -17,6 +18,7 @@ def get_database_size():
         with psycopg.connect(**connection_dict) as conn:
             with conn.cursor() as cur:
 
+                # count length of each table
                 cur.execute("select count(*) from dict_entry")
                 dict_entry_count = cur.fetchone()[0]
                 
@@ -50,21 +52,17 @@ def get_database_size():
 def parse(word):
     try:
         if regex.search(r'[\U00010000-\U000100FA]', word, regex.IGNORECASE):
-            # linear b characters found
+            # linear b characters found, convert to transliteration
             word = tools.linear_b_to_latin(word)
             
         with psycopg.connect(**connection_dict) as conn:
             with conn.cursor() as cur:
 
-                # cur.execute(
-                #     "select entryid from dict_entry where word = %s::text",
-                #     (word,)
-                # )
-                # entryid = cur.fetchone()[0]
-
+                # look up in a join of the inflection table and the form table
                 cur.execute("select dict_entry, formdeclension, formcase, formgender, formnumber, uncertaingender, formpronunciation from inflection, form where inflection.form=form.formid and inflection = %s", (word,))
                 output_dict = cur.fetchall()
 
+                # # debug:
                 # result_dict = {}
                 # for form in output_dict:
                 #     print(list(form))
@@ -72,7 +70,9 @@ def parse(word):
                 #     form_list = list(form).remove(form[0])
                 #     result_dict[form[0]] = form_list
                 # print(result_dict)
+
         if len(output_dict) != 0:
+            # as long as there are results
             print(
                 json.dumps(
                     output_dict,
@@ -101,6 +101,7 @@ def parse(word):
 
 def lookup(entry):
     try:
+        # user can give either entryid or just the word, need to convert if number
         try:
             entry = int(entry)
         except:
@@ -109,6 +110,7 @@ def lookup(entry):
         with psycopg.connect(**connection_dict) as conn:
             with conn.cursor() as cur:
             
+                # user enters an entryid
                 if isinstance(entry, int):
                     cur.execute("select word, entrydefinition, category, stem from dict_entry where entryid = %s", (entry,))
                     result = cur.fetchone()
@@ -116,9 +118,11 @@ def lookup(entry):
                     definition = result[1]
                     category = result[2]
                     stem = result[3]
+                
+                # user enters a word
                 elif isinstance(entry, str):
                     if regex.search(r'[\U00010000-\U000100FA]', entry, regex.IGNORECASE):
-                        # linear b characters found
+                        # linear b characters found, convert to transliteration
                         entry = tools.linear_b_to_latin(entry)
                     cur.execute("select entryid, word, entrydefinition, category, stem from dict_entry where word = %s", (entry,))
                     result = cur.fetchone()
@@ -130,6 +134,7 @@ def lookup(entry):
 
         print(
             json.dumps(
+                # TODO check if this if statement is redundant
                     {
                         "entry_id": int(entry),
                         "word": word,
@@ -160,9 +165,9 @@ def lookup(entry):
         )
 
 if __name__ == "__main__":
+    # get cli arguments to pick function to run
     parser = argparse.ArgumentParser(description="Query the Tiripode database for forms and lexicon entries")
     parser.add_argument("--parse", help="get a word parsed")
-    # parser.add_argument("word", type=str, nargs=1, help="word to be parsed")
     parser.add_argument("--lookup", help="get a dictionary entry")
     parser.add_argument("--size", help="get number of entries in database", action="store_true")
     parser.add_argument("--debug", help="print detailed info for debugging", action="store_true")

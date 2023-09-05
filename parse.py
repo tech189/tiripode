@@ -2,8 +2,6 @@ import tools                # converting latin <-> linear b
 import endings              # noun, verb endings
 import log                  # set up logging
 
-import json                 # importing sign table
-
 # get logger from main file
 logger = log.logger
 
